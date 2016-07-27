@@ -38,6 +38,7 @@
 <!ENTITY nfsquick       "Highly Available NFS Storage with DRBD and Pacemaker"> 
 <!ENTITY deploy         "Deployment Guide"> 
 <!ENTITY instquick      "Installation and Setup Quick Start">
+<!ENTITY pcmkremquick   "Quick Start pacemaker_remote">
 <!ENTITY admin          "Administration Guide">
 <!ENTITY storage        "Storage Administration Guide">
 <!ENTITY virtual        "Virtualization Guide">
