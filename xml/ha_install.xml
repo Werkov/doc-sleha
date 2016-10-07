@@ -48,9 +48,22 @@
 
   <para>
    After you have installed and set up a two-node cluster, you can extend the
-   cluster by cloning existing nodes and adding the clones to the cluster.
+   cluster by cloning existing nodes with &ay; and adding the clones to the cluster.
   </para>
    
+   <para>&ay; uses profiles that contains installation and configuration data.
+   A profile tells &ay; what to install and how to configure the installed system to
+   get a ready-to-use system in the end. This profile can then be used
+   for mass deployment in different ways (for example, to clone existing
+   cluster nodes).</para>
+
+   <para>
+    For detailed instructions on how to use &ay; in various scenarios,
+    see the <citetitle>&sle; &productnumber; &deploy;</citetitle>, available at
+    <link xlink:href="http://www.suse.com/documentation/sle-12"/>. Refer to chapter
+    <citetitle>Automated Installation</citetitle>.
+   </para>
+
    <important>
     <title>Identical Hardware</title>
     <para>
@@ -59,10 +72,9 @@
      configurations.
     </para>
     <para>
-     If you need to deploy cluster nodes on non-identical hardware, refer to
+     If you need to deploy cluster nodes on non-identical hardware, refer to the
      <citetitle>&sle; &productnumber; &deploy;</citetitle>,
-     available at <link xlink:href="http://www.suse.com/documentation/sle-12"/>.
-     See chapter <citetitle>Automated Installation</citetitle>, section
+     chapter <citetitle>Automated Installation</citetitle>, section
      <citetitle>Rule-Based Autoinstallation</citetitle>.
     </para>
    </important>
