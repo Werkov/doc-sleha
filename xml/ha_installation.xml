@@ -43,10 +43,71 @@
   <title>Definition of Terms</title>
 
   <para>
-   This chapter uses several terms that are defined below.
+   Several key terms used in the &yast; cluster module and in this chapter are
+   defined below.
   </para>
 
   <variablelist>
+   <varlistentry>
+    <term>Bind Network Address (<systemitem>bindnetaddr</systemitem>)
+    </term>
+    <listitem>
+     <para>
+      &def-bindnetaddr; To simplify sharing configuration files across
+      the cluster, &corosync; uses network interface netmask to mask only
+      the address bits that are used for routing the network. For example,
+      if the local interface is <literal>192.168.5.92</literal> with netmask
+      <literal>255.255.255.0</literal>, set
+      <systemitem>bindnetaddr</systemitem> to
+      <literal>192.168.5.0</literal>. If the local interface is
+      <literal>192.168.5.92</literal> with netmask
+      <literal>255.255.255.192</literal>, set
+      <systemitem>bindnetaddr</systemitem> to
+      <literal>192.168.5.64</literal>.
+     </para>
+     <note>
+      <title>Network Address for All Nodes</title>
+      <para>
+       As the same &corosync; configuration will be used on all nodes,
+       make sure to use a network address as
+       <systemitem>bindnetaddr</systemitem>, not the address of a specific
+       network interface.
+      </para>
+     </note>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><systemitem class="resource">conntrack</systemitem> Tools</term>
+    <listitem>
+     <para>
+      &def-conntrack; For detailed information, refer to
+      <link xlink:href="http://conntrack-tools.netfilter.org/"/>.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term>&csync;</term>
+    <listitem>
+     <para>
+      &def-csync2; &csync; can handle any number of hosts, sorted into
+      synchronization groups. Each synchronization group has its own list of
+      member hosts and its include/exclude patterns that define which ﬁles
+      should be synchronized in the synchronization group. The groups, the
+      host names belonging to each group, and the include/exclude rules for
+      each group are specified in the &csync; configuration file,
+      <filename>/etc/csync2/csync2.cfg</filename>.
+     </para>
+     <para>
+      For authentication, &csync; uses the IP addresses and pre-shared
+      keys within a synchronization group. You need to generate one key file
+      for each synchronization group and copy it to all group members.
+     </para>
+     <para>
+      For more information about &csync;, refer to
+      <link xlink:href="http://oss.linbit.com/csync2/paper.pdf"/>
+     </para>
+    </listitem>
+   </varlistentry>
    <varlistentry>
     <term>Existing Cluster</term>
     <listitem>
@@ -91,42 +152,6 @@
      </para>
     </listitem>
    </varlistentry>
-   <varlistentry>
-    <term>Unicast</term>
-    <listitem>
-     <para>
-      &def-unicast;
-     </para>
-    </listitem>
-   </varlistentry>
-   <varlistentry>
-    <term>Bind Network Address (<systemitem>bindnetaddr</systemitem>)
-  </term>
-    <listitem>
-     <para>
-      &def-bindnetaddr; To simplify sharing configuration files across
-      the cluster, &corosync; uses network interface netmask to mask only
-      the address bits that are used for routing the network. For example,
-      if the local interface is <literal>192.168.5.92</literal> with netmask
-      <literal>255.255.255.0</literal>, set
-      <systemitem>bindnetaddr</systemitem> to
-      <literal>192.168.5.0</literal>. If the local interface is
-      <literal>192.168.5.92</literal> with netmask
-      <literal>255.255.255.192</literal>, set
-      <systemitem>bindnetaddr</systemitem> to
-      <literal>192.168.5.64</literal>.
-     </para>
-     <note>
-      <title>Network Address for All Nodes</title>
-      <para>
-       As the same &corosync; configuration will be used on all nodes,
-       make sure to use a network address as
-       <systemitem>bindnetaddr</systemitem>, not the address of a specific
-       network interface.
-      </para>
-     </note>
-    </listitem>
-   </varlistentry>
    <varlistentry xml:id="vle.ha.rrp">
     <term>Redundant Ring Protocol (RRP)</term>
     <listitem>
@@ -161,39 +186,15 @@
        </para>
       </listitem>
      </itemizedlist>
-<!--With RRP, two physically separate networks are used for communication. In case one
+     <!--With RRP, two physically separate networks are used for communication. In case one
       network fails, the cluster nodes can still communicate via the other network.-->
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term>&csync;</term>
+    <term>Unicast</term>
     <listitem>
      <para>
-      &def-csync2; &csync; can handle any number of hosts, sorted into
-      synchronization groups. Each synchronization group has its own list of
-      member hosts and its include/exclude patterns that define which ﬁles
-      should be synchronized in the synchronization group. The groups, the
-      host names belonging to each group, and the include/exclude rules for
-      each group are specified in the &csync; configuration file,
-      <filename>/etc/csync2/csync2.cfg</filename>.
-     </para>
-     <para>
-      For authentication, &csync; uses the IP addresses and pre-shared
-      keys within a synchronization group. You need to generate one key file
-      for each synchronization group and copy it to all group members.
-     </para>
-     <para>
-      For more information about &csync;, refer to
-      <link xlink:href="http://oss.linbit.com/csync2/paper.pdf"/>
-     </para>
-    </listitem>
-   </varlistentry>
-   <varlistentry>
-    <term><systemitem class="resource">conntrack</systemitem> Tools</term>
-    <listitem>
-     <para>
-      &def-conntrack; For detailed information, refer to
-      <link xlink:href="http://conntrack-tools.netfilter.org/"/>.
+      &def-unicast;
      </para>
     </listitem>
    </varlistentry>
