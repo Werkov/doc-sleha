@@ -17,15 +17,15 @@
     (from scratch) or to modify options for an existing cluster.
    </para>
    <para>
-    However, if you prefer an automated approach for setting up the cluster,
+    However, if you prefer an automated approach for setting up a cluster,
     see the <citetitle>&instquick;</citetitle>. It describes how to install the
-    needed packages and leads you to a very basic two-node cluster, which is
+    needed packages and leads you to a basic two-node cluster, which is
     set up with the <systemitem>ha-cluster-bootstrap</systemitem> scripts.
    </para>
    <para>
     You can also use a combination of both setup methods, for example: set up
-    one node with &yast; cluster and then use the bootstrap script
-    <command>ha-cluster-join</command> to integrate more nodes.
+    one node with &yast; cluster and then use one of the bootstrap scripts
+    to integrate more nodes (or vice versa).
    </para>
   </abstract>
       <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
