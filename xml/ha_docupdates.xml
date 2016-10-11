@@ -1091,9 +1091,8 @@ toms 2014-08-12:
                 </listitem>-->
       <listitem>
        <para>
-        Updated <xref linkend="sec.ha.installation.setup.manual"/> to
-        reflect the software changes to the
-        <xref linkend="sec.ha.installation.setup.yast2cluster" xrefstyle="select:title nopage"/>.
+        Updated section <citetitle>Manual Cluster Setup (YaST)</citetitle> to
+        reflect the software changes to the &yast; cluster module.
        </para>
       </listitem>
       <listitem>
