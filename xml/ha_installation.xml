@@ -201,62 +201,6 @@
   </variablelist>
  </sect1>
 
- <!--<sect1 xml:id="sec.ha.installation.overview">
-  <title>Overview</title>
-  <para>
-   The following basic steps are needed for installation and initial cluster
-   setup.
-  </para>
-   <step>
-    <para>
-     Initial Cluster Setup:
-    </para>
-    <para>
-     After installing the software on all nodes that will be part of your
-     cluster, the following steps are needed to initially configure the
-     cluster.
-    </para>
-    <substeps performance="required">
-     <step>
-      <para>
-       <xref linkend="sec.ha.installation.setup.channels" xrefstyle="select:title"/>
-      </para>
-     </step>
-     <step>
-      <para>
-       Optional:
-       <xref linkend="sec.ha.installation.setup.security" xrefstyle="select:title"/>
-      </para>
-     </step>
-     <step>
-      <para>
-       <xref linkend="sec.ha.installation.setup.csync2" xrefstyle="select:title"/>.
-       Whereas the configuration of &csync; is done on one node only, the
-       service &csync; needs to be started on all nodes.
-      </para>
-     </step>
-     <step>
-      <para>
-       Optional:
-       <xref linkend="sec.ha.installation.setup.conntrackd" xrefstyle="select:title"/>
-      </para>
-     </step>
-     <step>
-      <para>
-       <xref linkend="sec.ha.installation.setup.services" xrefstyle="select:title"/>
-      </para>
-     </step>
-     <step>
-      <para>
-       <xref linkend="sec.ha.installation.start" xrefstyle="select:title"/>.
-       The &corosync; service needs to be started on all nodes.
-      </para>
-     </step>
-    </substeps>
-   </step>
-  </procedure>
- </sect1>-->
-
  <sect1 xml:id="sec.ha.setup.yast.overview">
    <title>&yast; Cluster Module</title>
    <para>
@@ -267,16 +211,16 @@
   <screen>sudo yast2 cluster</screen>
 
   <para>
-   <remark>taroth 2016-10-07: update screenshot with GMC!</remark>
-   The cluster module provides the following screens:
+   The cluster module shows the following screens:
   </para>
   <variablelist>
    <varlistentry>
     <term>Communication Channels</term>
     <listitem>
      <para> Allows you to define one or two communication channels for
-      communication between the cluster nodes. For communication between the
-      nodes, either use multicast (UDP) or unicast (UDPU).</para>
+      communication between the cluster nodes. As transport protocol,
+      either use multicast (UDP) or unicast (UDPU). For details, see
+      <xref linkend="sec.ha.installation.setup.channels"/>.</para>
      <important>
       <title>Redundant Communication Paths</title>
       <para>For a supported cluster setup two or more redundant communication
@@ -292,7 +236,8 @@
       <listitem>
        <para>Allows you to define the authentication settings for the cluster.
         HMAC/SHA1 authentication requires a shared secret used
-        to protect and authenticate messages.
+        to protect and authenticate messages. For details, see
+        <xref linkend="sec.ha.installation.setup.security"/>.
        </para>
       </listitem>
      </varlistentry>
@@ -301,7 +246,8 @@
        <listitem>
      <para>
       &csync; helps you to keep track of configuration changes and to
-      keep files synchronized across the cluster nodes:
+      keep files synchronized across the cluster nodes. For details, see
+      <xref linkend="sec.ha.installation.setup.csync2"/>.
      </para>
        </listitem>
       </varlistentry>
@@ -309,7 +255,10 @@
         <term>Configure conntrackd</term>
         <listitem>
          <para>
-          FIXME
+          Allows you to configure the user-space
+          <systemitem class="daemon">conntrackd</systemitem>. Use the conntrack
+          tools for <emphasis>stateful</emphasis> packet inspection for iptables.
+          For details, see <xref linkend="sec.ha.installation.setup.conntrackd"/>.
          </para>
         </listitem>
       </varlistentry>
@@ -317,23 +266,14 @@
     <term>Service</term>
     <listitem>
      <para>
-      FIXME
+      Allows you to configure the service for bringing the cluster node online.
+      Define whether to start the &pace; service at boot time and if to open the
+      ports in the firewall that are needed for communication between the nodes.
+      For details, see <xref linkend="sec.ha.installation.setup.services"/>.
      </para>
     </listitem>
    </varlistentry>
-
   </variablelist>
-  <figure>
-   <title>&yast; Cluster Module&mdash;Overview</title>
-   <mediaobject>
-    <imageobject role="fo">
-     <imagedata fileref="yast2_cluster_main.png" width="100%" format="PNG"/>
-    </imageobject>
-    <imageobject role="html">
-     <imagedata fileref="yast2_cluster_main.png" width="75%" format="PNG"/>
-    </imageobject>
-   </mediaobject>
-  </figure>
 
    <para><remark>taroth 2016-10-07: check with GMC if this is still true!</remark>
     If you start the cluster module for the first time, it appears as
@@ -341,13 +281,17 @@
     Otherwise, click the categories on the left panel to access the
     configuration options for each step.
    </para>
-      <para>
-    Note that some options in the &yast; cluster module apply only to the
-    current node, whereas others may automatically be transferred to all
-    nodes. Find detailed information about this in the following sections.
-   </para>
-  </sect1>
 
+   <note>
+    <title>Settings in the &yast; Cluster Module</title>
+     <para>Some settings in the &yast; cluster module apply only to the
+      current node. Other settings may automatically be transferred to all nodes
+      with &csync;. Find detailed information about this in the following
+      sections.
+    </para>
+   </note>
+  </sect1>
+<!--taroth 2016-10-11: updated until here-->
   <sect1 xml:id="sec.ha.installation.setup.channels">
    <title>Defining the Communication Channels</title>
    <para>
