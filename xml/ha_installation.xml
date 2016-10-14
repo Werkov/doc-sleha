@@ -211,11 +211,14 @@
   <screen>sudo yast2 cluster</screen>
 
   <para>
-   The cluster module shows the following screens:
+   The following list shows an overview of the available screens in the
+   &yast; cluster module and shows if the screen contains parameters that
+   are <emphasis>required</emphasis> for successful cluster setup or if its
+   parameters are <emphasis>optional</emphasis>.
   </para>
   <variablelist>
    <varlistentry>
-    <term>Communication Channels</term>
+    <term>Communication Channels (required)</term>
     <listitem>
      <para> Allows you to define one or two communication channels for
       communication between the cluster nodes. As transport protocol,
@@ -232,7 +235,7 @@
     </listitem>
    </varlistentry>
    <varlistentry>
-      <term>Security</term>
+      <term>Security (optional but recommended)</term>
       <listitem>
        <para>Allows you to define the authentication settings for the cluster.
         HMAC/SHA1 authentication requires a shared secret used
@@ -242,7 +245,7 @@
       </listitem>
      </varlistentry>
      <varlistentry>
-       <term>Configure &csync;</term>
+       <term>Configure &csync; (optional but recommended)</term>
        <listitem>
      <para>
       &csync; helps you to keep track of configuration changes and to
@@ -252,7 +255,7 @@
        </listitem>
       </varlistentry>
       <varlistentry>
-        <term>Configure conntrackd</term>
+        <term>Configure conntrackd (optional)</term>
         <listitem>
          <para>
           Allows you to configure the user-space
@@ -263,7 +266,7 @@
         </listitem>
       </varlistentry>
    <varlistentry>
-    <term>Service</term>
+    <term>Service (required)</term>
     <listitem>
      <para>
       Allows you to configure the service for bringing the cluster node online.
@@ -297,23 +300,30 @@
    <para>
     For successful communication between the cluster nodes, define at least
     one communication channel. As transport protocol, either use multicast (UDP)
-    or unicast (UDPU).If you want to define a second, redundant channel
-    both communication channels must use the same protocol.
+    or unicast (UDPU) as described in <xref
+    linkend="pro.ha.installation.setup.channel1.udp" xrefstyle="select:label"/>
+    or <xref linkend="pro.ha.installation.setup.channel1.udpu"
+     xrefstyle="select:label"/>, respectively.
+    If you want to define a second, redundant channel
+    (<xref linkend="pro.ha.installation.setup.channel2"
+     xrefstyle="select:label"/>),
+    both communication channels must use the <emphasis>same</emphasis> protocol.
    </para>
       
-   <para>All settings defined in the <guimenu>Communication Channels</guimenu>
-    screen in &yast; cluster are written to &corosync.conf;. You can find example
+   <para>All settings defined in the in &yast;
+    <guimenu>Communication Channels</guimenu>
+    screen are written to &corosync.conf;. Find example
     files for a multicast and a unicast setup in
     <filename>/usr/share/doc/packages/corosync/</filename>.
    </para>
    
    <para>If you are using IPv4 addresses, node IDs are optional. If you are using
     IPv6 addresses, node IDs are required. Instead of specifying IDs manually
-    for each node, the &yast; cluster contains an option to automatically generate
-    a unique ID for every cluster node.</para>
+    for each node, the &yast; cluster module contains an option to automatically
+    generate a unique ID for every cluster node.</para>
  
    <procedure xml:id="pro.ha.installation.setup.channel1.udp">
-    <title>Defining the First Communication Channel with Multicast</title>
+    <title>Defining the First Communication Channel (Multicast)</title>
     <para>
      When using multicast, the same <systemitem>bindnetaddr</systemitem>,
     <systemitem>mcastaddr</systemitem>, and <systemitem>mcastport</systemitem>
@@ -351,22 +361,10 @@
      <para>
       Define the <guimenu>Multicast Port</guimenu>.
      </para>
-
-     <figure>
-      <title>&yast; Cluster&mdash;Multicast Configuration</title>
-      <mediaobject>
-       <imageobject role="fo">
-        <imagedata fileref="yast2_cluster_comm_multicast.png" width="100%" format="PNG"/>
-       </imageobject>
-       <imageobject role="html">
-        <imagedata fileref="yast2_cluster_comm_multicast.png" width="75%" format="PNG"/>
-       </imageobject>
-      </mediaobject>
-     </figure>
     </step>
     <step>
      <para>
-      To automatically generate a unique ID for every cluster node keep the option
+      To automatically generate a unique ID for every cluster node keep
       <guimenu>Auto Generate Node ID</guimenu> enabled.
      </para>
     </step>
@@ -385,11 +383,34 @@
       your cluster.
      </para>
     </step>
+    <step>
+     <para>
+      Confirm your changes.
+     </para>
+    </step>
+    <step>
+     <para>
+      If needed, define a redundant communication channel in &corosync; as
+      described in <xref linkend="pro.ha.installation.setup.channel2"/>.
+     </para>
+    </step>
    </procedure>
 
-<!--   -->
+   <figure>
+    <title>&yast; Cluster&mdash;Multicast Configuration</title>
+    <mediaobject>
+     <imageobject role="fo">
+      <imagedata fileref="yast2_cluster_comm_multicast.png" width="100%" format="PNG"/>
+     </imageobject>
+     <imageobject role="html">
+      <imagedata fileref="yast2_cluster_comm_multicast.png" width="75%" format="PNG"/>
+     </imageobject>
+    </mediaobject>
+   </figure>
+  <para>If you want to use unicast instead of multicast for cluster
+   communication, proceed as follows.</para>
    <procedure xml:id="pro.ha.installation.setup.channel1.udpu">
-    <title>Defining the First Communication Channel with Unicast</title>
+    <title>Defining the First Communication Channel (Unicast)</title>
     <step>
      <para>
       Start the &yast; cluster module and switch to the <guimenu>Communication
@@ -443,25 +464,11 @@
         To modify or remove any addresses of cluster members, use the
         <guimenu>Edit</guimenu> or <guimenu>Del</guimenu> buttons.
        </para>
-       <figure>
-        <title>&yast; Cluster&mdash;Unicast Configuration</title>
-        <mediaobject>
-         <imageobject role="fo">
-          <imagedata fileref="yast2_cluster_comm_unicast.png" width="100%" format="PNG"/>
-         </imageobject>
-         <imageobject role="html">
-          <imagedata fileref="yast2_cluster_comm_unicast.png" width="75%" format="PNG"/>
-         </imageobject>
-        </mediaobject>
-       </figure>
       </step>
-      <step>
+    <step>
      <para>
-      The option <guimenu>Auto Generate Node ID</guimenu> is enabled by
-      default. If you are using IPv4 addresses, node IDs are optional but
-      they are required when using IPv6 addresses. To automatically generate
-      a unique ID for every cluster node (which is less error-prone than
-      specifying IDs manually for each node), keep this option enabled.
+      To automatically generate a unique ID for every cluster node keep
+      <guimenu>Auto Generate Node ID</guimenu> enabled.
      </para>
     </step>
     <step>
@@ -481,167 +488,174 @@
     </step>
     <step>
      <para>
-      If you modified any options for an existing cluster, confirm your
-      changes and close the cluster module. &yast; writes the
-      configuration to <filename>/etc/corosync/corosync.conf</filename>.
+      Confirm your changes.
      </para>
     </step>
     <step>
      <para>
-      If needed, define a second communication channel as described below.
-      Or click <guimenu>Next</guimenu> and proceed with
-      <xref linkend="pro.ha.installation.setup.security"/>.
+      If needed, define a redundant communication channel in &corosync; as
+      described in <xref linkend="pro.ha.installation.setup.channel2"/>.
      </para>
     </step>
    </procedure>
+   <figure>
+    <title>&yast; Cluster&mdash;Unicast Configuration</title>
+    <mediaobject>
+     <imageobject role="fo">
+      <imagedata fileref="yast2_cluster_comm_unicast.png" width="100%" format="PNG"/>
+     </imageobject>
+     <imageobject role="html">
+      <imagedata fileref="yast2_cluster_comm_unicast.png" width="75%" format="PNG"/>
+     </imageobject>
+    </mediaobject>
+   </figure>
    
-   <procedure xml:id="pro.ha.installation.setup.channel2">
-    <title>Defining a Redundant Communication Channel</title>
-    <para>
-     If network device bonding cannot be used for any reason, the second
-     best choice is to define a redundant communication channel (a second
-     ring) in &corosync;. That way, two physically separate networks can
-     be used for communication. In case one network fails, the cluster nodes
-     can still communicate via the other network.
+   <para>
+    If network device bonding cannot be used for any reason, the second
+    best choice is to define a redundant communication channel (a second
+    ring) in &corosync;. That way, two physically separate networks can
+    be used for communication. In case one network fails, the cluster nodes
+    can still communicate via the other network.
+   </para>
+   <para>The additional communication channel in
+    &corosync; will form a second token-passing ring. In
+    <filename>/etc/corosync/corosync.conf</filename>, the first channel you
+    configured is the primary ring and gets the ringnumber
+   <literal>0</literal>. The second ring (redundant channel) gets the ringnumber
+    <literal>1</literal>.
+   </para>
+   <para>When having defined redundant communication channels in &corosync;,
+    use RRP to tell the cluster how to use these interfaces. With RRP, two
+    physically separate networks are used for communication. In case one
+    network fails, the cluster nodes can still communicate via the other
+    network.</para>
+   <para>RRP can have three modes:
+   </para>
+   <itemizedlist>
+    <listitem>
+     <para>
+      If set to <literal>active</literal>, &corosync; uses both
+      interfaces actively.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      If set to <literal>passive</literal>, &corosync; sends messages
+      alternatively over the available networks.
+     </para>
+    </listitem>
+    <listitem>
+     <para>
+      If set to <literal>none</literal>, RRP is disabled.
+     </para>
+    </listitem>
+   </itemizedlist>
+   
+  <procedure xml:id="pro.ha.installation.setup.channel2">
+   <title>Defining a Redundant Communication Channel</title>
+   <important>
+    <title>Redundant Rings and <filename>/etc/hosts</filename></title>
+    <para> If multiple rings are configured in &corosync;, each node can
+     have multiple IP addresses. This needs to be reflected in the
+      <filename>/etc/hosts</filename> file of all nodes. </para>
+   </important>
+   <step>
+    <para> Start the &yast; cluster module and switch to the
+      <guimenu>Communication Channels</guimenu> category. </para>
+   </step>
+   <step>
+    <para> Activate <guimenu>Redundant Channel</guimenu>. The redundant channel
+     must use the same protocol as the first communication channel you defined.
     </para>
-    <important>
-     <title>Redundant Rings and <filename>/etc/hosts</filename></title>
-     <para>
-      If multiple rings are configured, each node can have multiple IP
-      addresses. This needs to be reflected in the
-      <filename>/etc/hosts</filename> file of all nodes.
-     </para>
-    </important>
-    <step>
-     <para>
-      In the &yast; cluster module, switch to the <guimenu>Communication
-      Channels</guimenu> category.
-     </para>
-    </step>
-    <step>
-     <para>
-      Activate <guimenu>Redundant Channel</guimenu>. The redundant channel
-      must use the same protocol as the first communication channel you
-      defined.
-     </para>
-    </step>
-    <step>
-     <para>
-      If you use multicast, define the <guimenu>Bind Network
-      Address</guimenu>, the <guimenu>Multicast Address</guimenu> and the
-      <guimenu>Multicast Port</guimenu> for the redundant channel.
-     </para>
-     <para>
-      If you use unicast, define the <guimenu>Bind Network
-      Address</guimenu>, the <guimenu>Multicast Port</guimenu> and enter the
-      IP addresses of all nodes that will be part of the cluster.
-     </para>
-     <para>
-      Now you have defined an additional communication channel in
-      &corosync; that will form a second token-passing ring. In
-      <filename>/etc/corosync/corosync.conf</filename>, the primary ring
-      (the first channel you have configured) gets the ringnumber
-      <literal>0</literal>, the second ring (redundant channel) the
-      ringnumber <literal>1</literal>.
-     </para>
-    </step>
-    <step>
-     <para>
-      To tell &corosync; how and when to use the different channels,
-      select the <guimenu>rrp_mode</guimenu> you want to use
-      (<literal>active</literal> or <literal>passive</literal>). For more
-      information about the modes, refer to <xref linkend="vle.ha.rrp"/> or
-      click <guimenu>Help</guimenu>. As soon as RRP is used, the Stream
-      Control Transmission Protocol (SCTP) is used for communication between
-      the nodes (instead of TCP). The &hasi; monitors the status of the
-      current rings and automatically re-enables redundant rings after
-      faults. Alternatively, you can also check the ring status manually
-      with <command>corosync-cfgtool</command>. View the available options
-      with <option>-h</option>.
-     </para>
-     <para>
-      If only one communication channel is defined,
-      <guimenu>rrp_mode</guimenu> is automatically disabled (value
-      <literal>none</literal>).
-     </para>
-    </step>
-    <step>
-     <para>
-      If you modified any options for an existing cluster, confirm your
-      changes and close the cluster module. &yast; writes the
-      configuration to <filename>/etc/corosync/corosync.conf</filename>.
-     </para>
-    </step>
-    <step>
-     <para>
-      For further cluster configuration, click <guimenu>Next</guimenu> and
-      proceed with <xref linkend="sec.ha.installation.setup.security"/>.
-     </para>
-    </step>
-   </procedure>
-   
-  </sect1>
+   </step>
+   <step>
+    <para> If you use multicast, enter the following parameters: the
+      <guimenu>Bind Network Address</guimenu> to use, the <guimenu>Multicast
+      Address</guimenu> and the <guimenu>Multicast Port</guimenu> for the
+     redundant channel. </para>
+    <para> If you use unicast, define the following parameters: the
+      <guimenu>Bind Network Address</guimenu> to use, and the <guimenu>Multicast
+      Port</guimenu>. Enter the IP addresses of all nodes that will be part of
+     the cluster. </para>
+   </step>
+   <step>
+    <para>To tell &corosync; how and when to use the different channels,
+     select the <guimenu>rrp_mode</guimenu> to use:</para>
+    <itemizedlist>
+     <listitem>
+      <para> If only one communication channel is defined,
+        <guimenu>rrp_mode</guimenu> is automatically disabled (value
+        <literal>none</literal>).</para>
+     </listitem>
+     <listitem>
+      <para> If set to <literal>active</literal>, &corosync; uses both
+       interfaces actively. </para>
+     </listitem>
+     <listitem>
+      <para> If set to <literal>passive</literal>, &corosync; sends messages
+       alternatively over the available networks. </para>
+     </listitem>
+    </itemizedlist>
+    <para>As soon as RRP is used, the cluster uses the Stream Control
+     Transmission Protocol (SCTP) for communication between the nodes instead of
+     TCP. The &hasi; monitors the status of the current rings and
+     automatically re-enables redundant rings after faults.</para>
+    <para>Alternatively, check the ring status manually with
+     <command>corosync-cfgtool</command>. View the available options with
+      <option>-h</option>. </para>
+   </step>
+   <step>
+    <para> Confirm your changes. </para>
+   </step>
+  </procedure>
+ </sect1>
 
   <sect1 xml:id="sec.ha.installation.setup.security">
    <title>Defining Authentication Settings</title>
    <para>
-    The next step is to define the authentication settings for the cluster.
-    You can use HMAC/SHA1 authentication that requires a shared secret used
+    To define the authentication settings for the cluster, you can use HMAC/SHA1
+    authentication. It requires a shared secret used
     to protect and authenticate messages. The authentication key (password)
     you specify will be used on all nodes in the cluster.
    </para>
-   <procedure xml:id="pro.ha.installation.setup.security">
-    <title>Enabling Secure Authentication</title>
-    <step>
-     <para>
-      In the &yast; cluster module, switch to the
-      <guimenu>Security</guimenu> category.
-     </para>
-    </step>
-    <step>
-     <para>
-      Activate <guimenu>Enable Security Auth</guimenu>.
-     </para>
-    </step>
-    <step>
-     <para>
-      For a newly created cluster, click <guimenu>Generate Auth Key
+  <procedure xml:id="pro.ha.installation.setup.security">
+   <title>Enabling Secure Authentication</title>
+   <step>
+    <para> Start the &yast; cluster module and switch to the
+      <guimenu>Security</guimenu> category. </para>
+   </step>
+   <step>
+    <para> Activate <guimenu>Enable Security Auth</guimenu>. </para>
+   </step>
+   <step>
+    <para> For a newly created cluster, click <guimenu>Generate Auth Key
       File</guimenu>. An authentication key is created and written to
-      <filename>/etc/corosync/authkey</filename>.
-     </para>
-     <figure>
-      <title>&yast; Cluster&mdash;Security</title>
-      <mediaobject>
-       <imageobject role="fo">
-        <imagedata fileref="yast2_cluster_security.png" width="100%" format="PNG"/>
-       </imageobject>
-       <imageobject role="html">
-        <imagedata fileref="yast2_cluster_security.png" width="75%" format="PNG"/>
-       </imageobject>
-      </mediaobject>
-     </figure>
-     <para>
-      If you want the current machine to join an existing cluster, do not
-      generate a new key file. Instead, copy the
-      <filename>/etc/corosync/authkey</filename> from one of the nodes to
-      the current machine (either manually or with &csync;).
-     </para>
-    </step>
-    <step>
-     <para>
-      If you modified any options for an existing cluster, confirm your
-      changes and close the cluster module. &yast; writes the
-      configuration to <filename>/etc/corosync/corosync.conf</filename>.
-     </para>
-    </step>
-    <step>
-     <para>
-      For further cluster configuration, click <guimenu>Next</guimenu> and
-      proceed with <xref linkend="sec.ha.installation.setup.csync2"/>.
-     </para>
-    </step>
-   </procedure>
+      <filename>/etc/corosync/authkey</filename>. </para>
+    <para> If you want the current machine to join an existing cluster, do not
+     generate a new key file. Instead, copy the
+      <filename>/etc/corosync/authkey</filename> from one of the nodes to the
+     current machine (either manually or with &csync;). </para>
+   </step>
+   <step>
+    <para> Confirm your changes. &yast; writes the configuration to
+      <filename>/etc/corosync/corosync.conf</filename>. </para>
+   </step>
+  </procedure>
+
+   <figure>
+    <title>&yast; Cluster&mdash;Security</title>
+    <mediaobject>
+     <imageobject role="fo">
+      <imagedata fileref="yast2_cluster_security.png" width="100%" format="PNG"/>
+     </imageobject>
+     <imageobject role="html">
+      <imagedata fileref="yast2_cluster_security.png" width="75%" format="PNG"/>
+     </imageobject>
+    </mediaobject>
+   </figure>
   </sect1>
+
+<!--taroth 2016-10-14: updated until here-->
 
   <sect1 xml:id="sec.ha.installation.setup.csync2">
    <title>Transferring the Configuration to All Nodes</title>
