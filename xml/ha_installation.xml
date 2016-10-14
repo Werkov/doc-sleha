@@ -655,8 +655,6 @@
    </figure>
   </sect1>
 
-<!--taroth 2016-10-14: updated until here-->
-
   <sect1 xml:id="sec.ha.installation.setup.csync2">
    <title>Transferring the Configuration to All Nodes</title>
    <para>
@@ -712,182 +710,164 @@
     <link xlink:href="http://oss.linbit.com/csync2/"/> and
     <link xlink:href="http://oss.linbit.com/csync2/paper.pdf"/>.
    </para>
-   <procedure xml:id="pro.ha.installation.setup.csync2.yast">
-    <title>Configuring &csync; with &yast;</title>
+
+  <sect2 xml:id="pro.ha.installation.setup.csync2.yast">
+   <title>Configuring &csync; with &yast;</title>
+   <procedure>
     <step>
-     <para>
-      In the &yast; cluster module, switch to the
-      <guimenu>&csync;</guimenu> category.
-     </para>
+     <para> Start the &yast; cluster module and switch to the
+       <guimenu>&csync;</guimenu> category. </para>
     </step>
     <step>
-     <para>
-      To specify the synchronization group, click <guimenu>Add</guimenu> in
-      the <guimenu>Sync Host</guimenu> group and enter the local host names
+     <para> To specify the synchronization group, click <guimenu>Add</guimenu>
+      in the <guimenu>Sync Host</guimenu> group and enter the local host names
       of all nodes in your cluster. For each node, you must use exactly the
-      strings that are returned by the <command>hostname</command> command.
-     </para>
-<!--https://fate.suse.com/314956: csync2-->
+      strings that are returned by the <command>hostname</command> command. </para>
+     <!--https://fate.suse.com/314956: csync2-->
      <tip>
       <title>Host Name Resolution</title>
-      <para>
-       In case host name resolution does not work properly in your network,
-       you can also specify a combination of host name and IP address for
-       each cluster node. To do so, use the string
-       <replaceable>HOSTNAME@IP</replaceable> such as
-       <literal>&node1;@&wsIip;</literal>, for example. &csync;
-       will then use the IP addresses when connecting.
-      </para>
+      <para> In case host name resolution does not work properly in your
+       network, you can also specify a combination of host name and IP address
+       for each cluster node. To do so, use the string
+        <replaceable>HOSTNAME@IP</replaceable> such as
+        <literal>&node1;@&wsIip;</literal>, for example. &csync;
+       will then use the IP addresses when connecting. </para>
      </tip>
     </step>
     <step xml:id="step.csync2.generate.key">
-     <para>
-      Click <guimenu>Generate Pre-Shared-Keys</guimenu> to create a key file
-      for the synchronization group. The key file is written to
-      <filename>/etc/csync2/key_hagroup</filename>. After it has been
-      created, it must be copied manually to all members of the cluster.
-     </para>
+     <para> Click <guimenu>Generate Pre-Shared-Keys</guimenu> to create a key
+      file for the synchronization group. The key file is written to
+       <filename>/etc/csync2/key_hagroup</filename>. After it has been created,
+      it must be copied manually to all members of the cluster. </para>
     </step>
     <step>
-     <para>
-      To populate the <guimenu>Sync File</guimenu> list with the files that
-      usually need to be synchronized among all nodes, click <guimenu>Add
-      Suggested Files</guimenu>.
-     </para>
-     <figure>
-      <title>&yast; Cluster&mdash;&csync;</title>
-      <mediaobject>
-       <imageobject role="fo">
-        <imagedata fileref="yast2_cluster_sync.png" width="100%" format="PNG"/>
-       </imageobject>
-       <imageobject role="html">
-        <imagedata fileref="yast2_cluster_sync.png" width="75%" format="PNG"/>
-       </imageobject>
-      </mediaobject>
-     </figure>
+     <para> To populate the <guimenu>Sync File</guimenu> list with the files
+      that usually need to be synchronized among all nodes, click <guimenu>Add
+       Suggested Files</guimenu>. </para>
     </step>
     <step>
-     <para>
-      If you want to <guimenu>Edit</guimenu>, <guimenu>Add</guimenu> or
-      <guimenu>Remove</guimenu> files from the list of files to be
-      synchronized use the respective buttons. You must enter the absolute
-      path name for each file.
-     </para>
+     <para> If you want to <guimenu>Edit</guimenu>, <guimenu>Add</guimenu> or
+       <guimenu>Remove</guimenu> files from the list of files to be synchronized
+      use the respective buttons. You must enter the absolute path name for each
+      file. </para>
     </step>
     <step>
-     <para>
-      Activate &csync; by clicking <guimenu>Turn &csync; ON</guimenu>.
-      This will execute the following command to start &csync;
-      automatically at boot time:
-     </para>
-<screen>&prompt.root;<command>systemctl</command> enable csync2.socket</screen>
+     <para> Activate &csync; by clicking <guimenu>Turn &csync;
+       ON</guimenu>. This will execute the following command to start
+      &csync; automatically at boot time: </para>
+     <screen>&prompt.root;<command>systemctl</command> enable csync2.socket</screen>
     </step>
     <step>
-     <para>
-      If you modified any options for an existing cluster, confirm your
-      changes and close the cluster module. &yast; then writes the
-      &csync; configuration to
-      <filename>/etc/csync2/csync2.cfg</filename>. To start the
-      synchronization process now, proceed with
-      <xref linkend="pro.ha.installation.setup.csync2.start"/>.
-     </para>
+     <para> Confirm your changes. &yast; writes the &csync;
+      configuration to <filename>/etc/csync2/csync2.cfg</filename>.</para>
     </step>
     <step>
-     <para>
-      For further cluster configuration, click <guimenu>Next</guimenu> and
-      proceed with <xref linkend="sec.ha.installation.setup.conntrackd"/>.
-     </para>
+     <para>To start the synchronization process now, proceed with <xref
+       linkend="sec.ha.setup.yast.csync2.sync"/>. </para>
     </step>
    </procedure>
+   <figure>
+    <title>&yast; Cluster&mdash;&csync;</title>
+    <mediaobject>
+     <imageobject role="fo">
+      <imagedata fileref="yast2_cluster_sync.png" width="100%" format="PNG"/>
+     </imageobject>
+     <imageobject role="html">
+      <imagedata fileref="yast2_cluster_sync.png" width="75%" format="PNG"/>
+     </imageobject>
+    </mediaobject>
+   </figure>
+  </sect2>
+
+   <sect2 xml:id="sec.ha.setup.yast.csync2.sync">
+   <title>Synchronizing Changes with &csync;</title>
+   <para> To successfully synchronize the files with &csync;, the following
+    requirements must be met: </para>
+   <itemizedlist>
+    <listitem>
+     <para> The same &csync; configuration is available on all cluster
+      nodes. </para>
+    </listitem>
+    <listitem>
+     <para> The same &csync; authentication key is available on all cluster
+      nodes. </para>
+    </listitem>
+    <listitem>
+     <para> &csync; must be running on <emphasis>all</emphasis> cluster
+      nodes. </para>
+    </listitem>
+   </itemizedlist>
+
+   <para> Before the first &csync; run, you therefore need to make the
+    following preparations: </para>
+
+   <procedure>
+    <title>Preparing for Initial Synchronization with &csync;</title>
+    <step>
+     <para>Copy the file <filename>/etc/csync2/csync2.cfg</filename>
+      manually to all nodes after you have configured it as described in <xref
+       linkend="pro.ha.installation.setup.csync2.yast"/>. </para>
+    </step>
+    <step>
+     <para> Copy the file <filename>/etc/csync2/key_hagroup</filename> that you
+      have generated on one node in <xref linkend="step.csync2.generate.key"/>
+      to <emphasis>all</emphasis> nodes in the cluster. It is needed for
+      authentication by &csync;. However, do <emphasis>not</emphasis>
+      regenerate the file on the other nodes&mdash;it needs to be the same
+      file on all nodes. </para>
+    </step>
+    <!--taroth 2016-10-13. in contrast to csync2 section in GEO Quick, not needed
+    here because this is done in the yast csync2 conf step already:
+    <step>
+     <para>Execute the following command on all nodes to make the csync2
+      service start automatically at boot time:</para>
+     <screen>&prompt.root;<command>systemctl</command> enable csync2.socket</screen>
+    </step>-->
+    <step>
+     <para>Execute the following command on all nodes to start the service now: </para>
+     <screen>&prompt.root;<command>systemctl</command> start csync2.socket</screen>
+    </step>
+   </procedure>
+
    <procedure xml:id="pro.ha.installation.setup.csync2.start">
     <title>Synchronizing the Configuration Files with &csync;</title>
-    <para>
-     To successfully synchronize the files with &csync;, make sure that
-     the following prerequisites are met:
-    </para>
-    <itemizedlist>
-     <listitem>
-      <para>
-       The same &csync; configuration is available on all nodes. Copy the
-       file <filename>/etc/csync2/csync2.cfg</filename> manually to all
-       nodes after you have configured it as described in
-       <xref linkend="pro.ha.installation.setup.csync2.yast"/>. It is
-       recommended to include this file in the list of files to be
-       synchronized with &csync;.
-      </para>
-     </listitem>
-     <listitem>
-      <para>
-       Copy the file <filename>/etc/csync2/key_hagroup</filename> you have
-       generated on one node in <xref linkend="step.csync2.generate.key"/>
-       to <emphasis>all</emphasis> nodes in the cluster. It is needed for
-       authentication by &csync;. However, do <emphasis>not</emphasis>
-       regenerate the file on the other nodes as it needs to be the same
-       file on all nodes.
-      </para>
-     </listitem>
-     <listitem>
-      <para>
-       &csync; must be running on <emphasis>all</emphasis> nodes.
-      </para>
-      <note>
-       <title>Starting Services at Boot Time</title>
-       <para>
-        Execute the following command on all nodes to make the service
-        start automatically at boot time:
-       </para>
-<screen>&prompt.root;<command>systemctl</command> enable csync2.socket</screen>
-      </note>
-     </listitem>
-    </itemizedlist>
+
     <step>
-     <para>
-      On the node that you want to copy the configuration
-      <emphasis>from</emphasis>, execute the following command:
-     </para>
-<screen>&prompt.root;<command>csync2</command> <option>-xv</option></screen>
-     <para>
-      This will synchronize all the files once by pushing them to the other
-      nodes. If all files are synchronized successfully, &csync; will
-      finish with no errors.
-     </para>
-     <para>
-      If one or several files that are to be synchronized have been modified
-      on other nodes (not only on the current one), &csync; will report a
-      conflict. You will get an output similar to the one below:
-     </para>
-<screen>While syncing file /etc/corosync/corosync.conf:
+     <para>To initially synchronize all files once, execute the following
+      command on the machine that you want to copy the configuration
+       <emphasis>from</emphasis>: </para>
+     <screen>&prompt.root;<command>csync2</command> <option>-xv</option></screen>
+     <para> This will synchronize all the files once by pushing them to the
+      other nodes. If all files are synchronized successfully, &csync; will
+      finish with no errors. </para>
+     <para> If one or several files that are to be synchronized have been
+      modified on other nodes (not only on the current one), &csync; will
+      report a conflict. You will get an output similar to the one below: </para>
+     <screen>While syncing file /etc/corosync/corosync.conf:
 ERROR from peer hex-14: File is also marked dirty here!
 Finished with 1 errors.</screen>
     </step>
     <step>
-     <para>
-      If you are sure that the file version on the current node is the
-      <quote>best</quote> one, you can resolve the conflict by forcing this
-      file and resynchronizing:
-     </para>
-<screen>&prompt.root;<command>csync2</command> <option>-f</option> /etc/corosync/corosync.conf
-<command>csync2</command> <option>-x</option></screen>
+     <para> If you are sure that the file version on the current node is the
+       <quote>best</quote> one, you can resolve the conflict by forcing this
+      file and resynchronizing: </para>
+     <screen>&prompt.root;<command>csync2</command> <option>-f</option> /etc/corosync/corosync.conf
+&prompt.root;<command>csync2</command> <option>-x</option></screen>
     </step>
    </procedure>
-   <para>
-    For more information on the &csync; options, run
-    <command>csync2&nbsp;</command> <option>-help</option>.
-   </para>
+   <para> For more information on the &csync; options, run</para>
+   <screen>csync2&nbsp;-help</screen>
    <note>
     <title>Pushing Synchronization After Any Changes</title>
-    <para>
-     &csync; only pushes changes. It does <emphasis>not</emphasis>
-     continuously synchronize files between the nodes.
-    </para>
-    <para>
-     Each time you update files that need to be synchronized, you need to
-     push the changes to the other nodes: Run
-     <command>csync2&nbsp;</command> <option>-xv</option> on the node
-     where you did the changes. If you run the command on any of the other
-     nodes with unchanged files, nothing will happen.
-    </para>
+    <para> &csync; only pushes changes. It does <emphasis>not</emphasis>
+     continuously synchronize files between the machines. </para>
+    <para> Each time you update files that need to be synchronized, you need to
+     push the changes to the other machines: Run <command>csync2&nbsp;</command>
+     <option>-xv</option> on the machine where you did the changes. If you run
+     the command on any of the other machines with unchanged files, nothing will
+     happen. </para>
    </note>
+  </sect2>
   </sect1>
 
   <sect1 xml:id="sec.ha.installation.setup.conntrackd">
