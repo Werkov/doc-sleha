@@ -811,6 +811,8 @@
     <step>
      <para> Copy the file <filename>/etc/csync2/key_hagroup</filename> that you
       have generated on one node in <xref linkend="step.csync2.generate.key"/>
+      of <xref linkend="pro.ha.installation.setup.csync2.yast"
+       xrefstyle="select:label"/>
       to <emphasis>all</emphasis> nodes in the cluster. It is needed for
       authentication by &csync;. However, do <emphasis>not</emphasis>
       regenerate the file on the other nodes&mdash;it needs to be the same
@@ -874,7 +876,8 @@ Finished with 1 errors.</screen>
    <title>Synchronizing Connection Status Between Cluster Nodes</title>
    <para>
     To enable <emphasis>stateful</emphasis> packet inspection for iptables,
-    configure and use the conntrack tools.
+    configure and use the conntrack tools. This requires the following basic
+    steps:
    </para>
    <procedure>
     <step>
@@ -893,7 +896,7 @@ Finished with 1 errors.</screen>
     </step>
    </procedure>
    <para>
-    After configuring the conntrack tools, you can use them for &lvs;,
+    After having configured the conntrack tools, you can use them for &lvs;,
     see <xref linkend="cha.ha.lb" xrefstyle="select:title"/>.
    </para>
 <!--from fate#311872: It supports the only FTFW syncing mode now.-->
@@ -907,7 +910,7 @@ Finished with 1 errors.</screen>
     </para>
     <step>
      <para>
-      In the &yast; cluster module, switch to the <guimenu>Configure
+      Start the &yast; cluster module and switch to the <guimenu>Configure
       conntrackd</guimenu> category.
      </para>
     </step>
@@ -1009,29 +1012,22 @@ Finished with 1 errors.</screen>
     </step>
     <step>
      <para>
-      If you modified any options for an existing cluster node, confirm your
-      changes and close the cluster module. Note that the configuration only
+      Confirm your changes. Note that the configuration only
       applies to the current machine, not to all cluster nodes.
      </para>
-     <para>
-      If you have done the initial cluster setup exclusively with the
-      &yast; cluster module, you have now completed the basic
-      configuration steps. Proceed with
-      <xref linkend="sec.ha.installation.start"/>.
-     </para>
-     <figure>
-      <title>&yast; Cluster&mdash;Services</title>
-      <mediaobject>
-       <imageobject role="fo">
-        <imagedata fileref="yast2_cluster_services.png" width="100%" format="PNG"/>
-       </imageobject>
-       <imageobject role="html">
-        <imagedata fileref="yast2_cluster_services.png" width="75%" format="PNG"/>
-       </imageobject>
-      </mediaobject>
-     </figure>
     </step>
    </procedure>
+   <figure>
+    <title>&yast; Cluster&mdash;Services</title>
+    <mediaobject>
+     <imageobject role="fo">
+      <imagedata fileref="yast2_cluster_services.png" width="100%" format="PNG"/>
+     </imageobject>
+     <imageobject role="html">
+      <imagedata fileref="yast2_cluster_services.png" width="75%" format="PNG"/>
+     </imageobject>
+    </mediaobject>
+   </figure>
   </sect1>
 
   <sect1 xml:id="sec.ha.installation.start">
@@ -1070,13 +1066,13 @@ Finished with 1 errors.</screen>
       online, the output should be similar to the following:
      </para>
 <screen>&prompt.root;crm status
-      Last updated: Thu Jul  3 11:07:10 2014
-      Last change: Thu Jul  3 10:58:43 2014
-      Current DC: alice (175704363) - partition with quorum
-      2 Nodes configured
-      0 Resources configured
-      
-      Online: [ alice bob ]</screen>
+Last updated: Thu Jul  3 11:07:10 2014
+Last change: Thu Jul  3 10:58:43 2014
+Current DC: alice (175704363) - partition with quorum
+2 Nodes configured
+0 Resources configured
+
+Online: [ alice bob ]</screen>
      <para>
       This output indicates that the cluster resource manager is started and
       is ready to manage resources.
