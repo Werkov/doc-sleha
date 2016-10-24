@@ -33,27 +33,24 @@
    <title>Editing Resources and Groups</title>
    <para>
     In case you need to edit existing resources, go to the <guimenu>Status</guimenu>
-    screen and from the <guimenu>Operations</guimenu> column, select
-    <menuchoice>
-     <guimenu>action icon (arrow down)</guimenu>
-     <guimenu>Edit</guimenu>
-    </menuchoice>.
+    screen.  In the <guimenu>Operations</guimenu> column, click the arrow down
+    icon next to the resource or group you want to modify.
    </para>
    <para>
-    The edit interface appears. For a primitive resource, the following
+    The editing screen appears. If you edit a primitive resource, the following
     operations are available:
    </para>
 
    <itemizedlist>
-    <title>Primitive Operations</title>
+    <title>Operations for Primitives</title>
     <listitem>
-     <para>copy the resource</para>
+     <para>Copying the resource.</para>
     </listitem>
     <listitem>
-     <para>rename the resource</para>
+     <para>Renaming the resource (changing its ID).</para>
     </listitem>
     <listitem>
-     <para>delete the resource</para>
+     <para>Deleting the resource.</para>
     </listitem>
    </itemizedlist>
 
@@ -61,21 +58,18 @@
      If you edit a group, the following operations are available:
    </para>
    <itemizedlist>
-    <title>Group Operations</title>
+    <title>Operations for Groups</title>
     <listitem>
-     <para>Create a new primitive as child in this group.</para>
+     <para>Creating a new primitive which will be added to this group.</para>
     </listitem>
     <listitem>
-     <para>Rename the group name (ID).</para>
+     <para>Renaming the group (changing its ID).</para>
     </listitem>
     <listitem>
-     <para>Rearrange the group children by dragging the handle next to the
-      name.</para>
+     <para>Changing the order of the group members by dragging the handle
+      next to a resource and moving it to a different place.</para>
     </listitem>
-    <listitem>
-     <para>Rearrange the group children by dragging the handle next to the name</para>
-    </listitem>
-   </itemizedlist>
+    </itemizedlist>
   </sect2>
 
   <sect2 xml:id="sec.conf.hawk2.manage.start">
