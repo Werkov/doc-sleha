@@ -33,8 +33,8 @@
    <title>Editing Resources and Groups</title>
    <para>
     In case you need to edit existing resources, go to the <guimenu>Status</guimenu>
-    screen.  In the <guimenu>Operations</guimenu> column, click the arrow down
-    icon next to the resource or group you want to modify.
+    screen. In the <guimenu>Operations</guimenu> column, click the arrow down
+    icon next to the resource or group you want to modify and select <guimenu>Edit</guimenu>.
    </para>
    <para>
     The editing screen appears. If you edit a primitive resource, the following

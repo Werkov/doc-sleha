@@ -110,7 +110,7 @@
      <para>From the left navigation bar, select 
       <menuchoice>
        <guimenu>Configuration</guimenu>
-       <guimenu>Choose a Wizard</guimenu>
+       <guimenu>Wizards</guimenu>
       </menuchoice>.
      </para>
     </step>
@@ -152,8 +152,8 @@
     </step>
     <step>
      <para>From the left navigation bar, select <menuchoice>
-       <guimenu>Resources</guimenu>
-       <guimenu>Add a resource</guimenu>
+       <guimenu>Configuration</guimenu>
+       <guimenu>Add Resource</guimenu>
        <guimenu>Primitive</guimenu>
       </menuchoice>.</para>
     </step>
@@ -231,8 +231,8 @@
     </step>
     <step>
      <para>From the left navigation bar, select <menuchoice>
-       <guimenu>Resources</guimenu>
-       <guimenu>Add a resource</guimenu>
+       <guimenu>Configuration</guimenu>
+       <guimenu>Add Resource</guimenu>
        <guimenu>Template</guimenu>
       </menuchoice>.</para>
     </step>
@@ -263,7 +263,8 @@
        <guimenu>Resources</guimenu> list.</para>
     </step>
     <step>
-     <para>In the <guimenu>Operations</guimenu> column, click the
+     <para>In the <guimenu>Operations</guimenu> column, click the arrow down
+      icon next to the resource or group you want to modify.In the <guimenu>Operations</guimenu> column, click the
        <guimenu>Edit</guimenu> icon next to the resource you want to
       modify.</para>
      <para>The resource configuration screen opens.</para>
@@ -324,8 +325,8 @@
     </step>
     <step>
      <para>From the left navigation bar, select <menuchoice>
-      <guimenu>Resources</guimenu>
-      <guimenu>Add a resource</guimenu>
+      <guimenu>Configuration</guimenu>
+      <guimenu>Add Resource</guimenu>
       <guimenu>Primitive</guimenu>
      </menuchoice>.</para>
     </step>
@@ -422,8 +423,8 @@
     </step>
     <step>
      <para>From the left navigation bar, select <menuchoice>
-      <guimenu>Resources</guimenu>
-      <guimenu>Add a resource</guimenu>
+      <guimenu>Configuration</guimenu>
+      <guimenu>Add Resource</guimenu>
       <guimenu>Group</guimenu>
      </menuchoice>.</para>
     </step>
@@ -497,8 +498,8 @@
     </step>
     <step>
      <para>From the left navigation bar, select <menuchoice>
-      <guimenu>Resources</guimenu>
-      <guimenu>Add a resource</guimenu>
+      <guimenu>Configuration</guimenu>
+      <guimenu>Add Resource</guimenu>
       <guimenu>Clone</guimenu>
      </menuchoice>.</para>
     </step>
@@ -571,8 +572,8 @@
     </step>
     <step>
      <para>From the left navigation bar, select <menuchoice>
-      <guimenu>Resources</guimenu>
-      <guimenu>Add a resource</guimenu>
+      <guimenu>Configurations</guimenu>
+      <guimenu>Add Resource</guimenu>
       <guimenu>Multi-state</guimenu>
      </menuchoice>.</para>
     </step>
@@ -630,8 +631,8 @@
     </step>
     <step>
      <para>From the left navigation bar, select <menuchoice>
-      <guimenu>Resources</guimenu>
-      <guimenu>Add a resource</guimenu>
+      <guimenu>Configuration</guimenu>
+      <guimenu>Add Resource</guimenu>
       <guimenu>Tag</guimenu>
      </menuchoice>.</para>
     </step>
