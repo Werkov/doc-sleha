@@ -66,8 +66,8 @@
      <para>Renaming the group (changing its ID).</para>
     </listitem>
     <listitem>
-     <para>Changing the order of the group members by dragging the handle
-      next to a resource and moving it to a different place.</para>
+     <para>Re-sort group members by dragging and dropping them into the
+      order you want using the <quote>handle</quote> icon on the right.</para>
     </listitem>
     </itemizedlist>
   </sect2>
