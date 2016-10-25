@@ -182,7 +182,8 @@
       <step>
        <para>In the list of <guimenu>Resources</guimenu>, go to the respective resource. From the
          <guimenu>Operations</guimenu> column click the <guimenu>Delete</guimenu> icon next to the
-        resource.</para>
+        resource.<remark>taroth 2016-10-25: todo - on first sight, did not find the "Delete" icon any more,
+         investigate!</remark></para>
       </step>
       <step>
        <para>To continue, confirm the message that appears.</para>

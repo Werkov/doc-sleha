@@ -71,6 +71,12 @@
       resource will not start immediately). </para>
     </listitem>
    </varlistentry>
+   <varlistentry>
+    <term>Utilization</term>
+    <listitem>
+     <para><remark>taroth 2016-10-25: FIXME: add content</remark></para>
+    </listitem>
+   </varlistentry>
   </variablelist>
   <para>You can adjust the entries and values in those categories either during
    resource creation or later.</para>
@@ -266,7 +272,7 @@
      <para>In the <guimenu>Operations</guimenu> column, click the arrow down
       icon next to the resource or group you want to modify.In the <guimenu>Operations</guimenu> column, click the
        <guimenu>Edit</guimenu> icon next to the resource you want to
-      modify.</para>
+      modify and select <guimenu>Edit</guimenu>.</para>
      <para>The resource configuration screen opens.</para>
      <figure>
       <title>&hawk2;&mdash;Editing A Primitive Resource</title>
