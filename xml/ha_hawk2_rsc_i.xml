@@ -407,19 +407,13 @@
    </para>
    <note>
     <title>Empty Groups</title>
-    <para><remark>taroth 2016-10-21: check with krig if we need to remove/modify
-     this (due to fate#318316) - but currently, it seems as though at least one
-     child resource is still required for creating a group (see
-     http://bugzilla.suse.com/show_bug.cgi?id=1006169)</remark>
+    <para>
      Groups must contain at least one resource, otherwise the configuration
-     is not valid. In &hawk2;, primitives cannot be created or modified
-     while creating a group. Before adding a group, create primitives, 
-     and configure them as desired. For details, refer to
-     <xref linkend="sec.conf.hawk2.rsc.primitive"/>.
+     is not valid. While creating a group, &hawk2; allows you to create more
+     primitives and add them to the group. For details, see
+     <xref linkend="sec.conf.hawk2.manage.edit"/>.
     </para>
    </note>
-   <!--taroth 2015-11-30: **missing functionality: once created, you can't rename a group or 
-    change its children **-->
    <procedure xml:id="pro.conf.hawk2.group">
     <title>Adding a Resource Group</title>
     <step>
