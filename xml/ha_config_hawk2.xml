@@ -263,7 +263,7 @@
   </sect2>
 
   <sect2 xml:id="sec.conf.hawk2.overview.toprow">
-   <title>Top-Level Navigation</title>
+   <title>Top-Level Row</title>
    <para>&hawk2;'s top-level row shows the following entries:</para>
    <itemizedlist>
     <listitem>
