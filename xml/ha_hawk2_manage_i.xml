@@ -257,9 +257,11 @@
 
   <sect2 xml:id="sec.conf.hawk2.manage.monitor.status">
    <title>Monitoring a Cluster</title>
-   <para>After you have logged in, &hawk2; displays the <guimenu>Status</guimenu> screen by
-    default. An icon in the upper right corner shows the cluster status at one glance. For further
-    details, have a look at the following categories:</para>
+   <para>To monitor a single cluster, use the <guimenu>Status</guimenu> screen.
+    After you have logged in to &hawk2;, the <guimenu>Status</guimenu> screen is
+    displayed by default . An icon in the upper right corner shows the cluster
+    status at one glance. For further details, have a look at the following
+    categories:</para>
    <variablelist>
     <varlistentry>
      <term>Errors</term>
@@ -312,31 +314,33 @@
 
   <sect2 xml:id="sec.conf.hawk2.manage.monitor.dash">
    <title>Monitoring Multiple Clusters</title>
-   <para> The cluster information displayed in the <guimenu>Dashboard</guimenu> screen is stored on
-    the server side and synchronized between the cluster nodes (if passwordless SSH access between
-    the cluster nodes has been configured). For details, see <xref
-     linkend="sec.crmreport.nonroot.ssh"/>. However, the machine you are running &hawk2; on does
-    not even need to be part of any cluster for that purpose&mdash;it can be a separate,
-    unrelated system. </para>
+   <para>To monitor multiple clusters, use the &hawk2; <guimenu>Dashboard</guimenu>.
+    The cluster information displayed in the <guimenu>Dashboard</guimenu>
+    screen is stored on the server side and synchronized between the cluster nodes
+    (if passwordless SSH access between the cluster nodes has been configured).
+    For details, see <xref linkend="sec.crmreport.nonroot.ssh"/>. However, the
+    machine you are running &hawk2; on does not even need to be part of any
+    cluster for that purpose&mdash;it can be a separate, unrelated system. </para>
+
+   <para>In addition to the general <xref linkend="sec.conf.hawk2.req" xrefstyle="select:title"/>,
+    the following prerequisites need to be fulfilled to monitor multiple clusters with
+    &hawk2;:</para>
+   <itemizedlist>
+    <title>Prerequisites</title>
+    <listitem>
+     <para> All clusters to be monitored from &hawk2;'s <guimenu>Dashboard</guimenu>
+      must be running &productname; &productnumber;.</para>
+    </listitem>
+    <listitem>
+     <para>If you did not replace the self-signed certificate for &hawk2; on every cluster node
+      with your own certificate (or a certificate signed by an official Certificate Authority), log
+      in to &hawk2; on <emphasis>every</emphasis> node in <emphasis>every</emphasis> cluster at
+      least once. Verify the certificate (or add an exception in the browser to bypass the
+      warning). </para>
+    </listitem>
+   </itemizedlist>
    <procedure xml:id="pro.conf.hawk2.dashboard">
-    <title>Monitoring Multiple Clusters with &hawk2;</title>
-    <para>In addition to the general <xref linkend="sec.conf.hawk2.req" xrefstyle="select:title"/>,
-     the following prerequisites need to be fulfilled to monitor multiple clusters with
-     &hawk2;:</para>
-    <itemizedlist>
-     <title>Prerequisites</title>
-     <listitem>
-      <para> All clusters to be monitored from &hawk2;'s <guimenu>Dashboard</guimenu> must be
-       running &productname; &productnumber;.</para>
-     </listitem>
-     <listitem>
-      <para>If you did not replace the self-signed certificate for &hawk2; on every cluster node
-       with your own certificate (or a certificate signed by an official Certificate Authority), log
-       in to &hawk2; on <emphasis>every</emphasis> node in <emphasis>every</emphasis> cluster at
-       least once. Verify the certificate (or add an exception in the browser to bypass the
-       warning). </para>
-     </listitem>
-    </itemizedlist>
+    <title>Monitoring Multiple Clusters with the Dashboard</title>
     <step>
      <para>Log in to &hawk2;:</para>
      <screen>https://<replaceable>HAWKSERVER</replaceable>:7630/</screen>
