@@ -225,12 +225,11 @@
        </listitem>
        <listitem>
         <para>
-         <guimenu>Edit</guimenu>: Allows you to edit node names and attributes,
+         <guimenu>Edit Configuration</guimenu>: Allows you to edit node names and attributes,
          resources and constraints.</para>
        </listitem> 
        <listitem>
-        <para><guimenu>Configuration</guimenu>: Opens the <guimenu>Cluster
-          Configuration</guimenu> screen where you can modify global cluster
+        <para><guimenu>Cluster Configuration</guimenu>: Allows you to modify global cluster
          options. For details, see <xref linkend="sec.conf.hawk2.cluster.config"/>.</para>
        </listitem>
        <listitem>
@@ -267,19 +266,19 @@
    <para>&hawk2;'s top-level row shows the following entries:</para>
    <itemizedlist>
     <listitem>
-     <para><guimenu>Batch</guimenu>: Stage changes to the cluster and
-      apply them later as a single transaction. For details, see
-      <xref linkend="sec.conf.hawk2.manage.monitor.batch"/>.
+     <para><guimenu>Batch</guimenu>: Click to switch to batch mode. It allows you
+      to simulate and stage changes and to apply them as a single transaction.
+      For details, see
+      <xref linkend="sec.conf.hawk2.batch"/>.
      </para>
     </listitem>
     <listitem>
-     <para><guimenu>Profile</guimenu>: Click to change your language
+     <para><guimenu>Profile</guimenu>: Change your language
       preferences for &hawk2;.</para>
     </listitem>
     <listitem>
-     <para><guimenu>Help</guimenu>: Click to access the HTML and PDF versions
-      of the &productname; manuals that are installed on the node that you
-      are connected to with &hawk2;.</para>
+     <para><guimenu>Help</guimenu>: Access the &productname; documentation,
+      read the release notes or report a bug.</para>
     </listitem>
     <listitem>
      <para><guimenu>Logout</guimenu>: Click to log out.</para>
