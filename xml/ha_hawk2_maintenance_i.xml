@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sect1
+[
+  <!ENTITY % entities SYSTEM "entity-decl.ent">
+    %entities;
+]>
+<!-- Converted by suse-upgrade version 1.1 -->
+<sect1 xmlns="http://docbook.org/ns/docbook"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ version="5.0" xml:id="sec.conf.hawk2.maintenance">
+
+ <title>Using Maintenance Mode</title>
+
+    <info>
+   <dm:docmanager xmlns:dm="urn:x-suse:ns:docmanager">
+    <dm:maintainer/>
+    <dm:status>editing</dm:status>
+    <dm:deadline/>
+    <dm:priority/>
+    <dm:translation>yes</dm:translation>
+    <dm:languages/>
+    <dm:release/>
+    <dm:repository/>
+   </dm:docmanager>
+    </info>
+  &maint-mode-basics;
+  <para>
+   With regard to that, &hasi; provides <literal>maintenance</literal>
+   options on several levels:
+  </para>
+  <itemizedlist>
+   <listitem>
+    <para>
+     <xref linkend="sec.conf.hawk2.maint.rsc" xrefstyle="select:title"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <xref linkend="sec.conf.hawk2.maint.nodes" xrefstyle="select:title"/>
+    </para>
+   </listitem>
+   <listitem>
+    <para>
+     <xref linkend="sec.conf.hawk2.maint.cluster" xrefstyle="select:title"/>
+    </para>
+   </listitem>
+  </itemizedlist>
+
+  &warning-maint-mode;
+
+  <para>
+   For more details on what happens to the resources and the cluster while
+   in maintenance mode, see
+   <xref linkend="sec.ha.config.basics.maint.mode"/>.
+  </para>
+ <sect2 xml:id="sec.conf.hawk2.maint.rsc">
+  <title>Applying Maintenance Mode to Resources</title>
+  <procedure>
+   <step>
+    <para>Log in to &hawk2;:</para>
+    <screen>https://<replaceable>HAWKSERVER</replaceable>:7630/</screen>
+   </step>
+   <step>
+    <para>
+     In the left navigation bar, select <guimenu>Status</guimenu>.</para>
+    </step>
+     <step>
+     <para>
+     On the <guimenu>Resources</guimenu> tab, select the resource you want to put
+      in maintenance mode.
+    </para>
+   </step>
+   <step>
+    <para>In the <guimenu>Operations</guimenu> column, click the arrow down
+     icon next to the resource and select <guimenu>Maintenance</guimenu>.
+     Confirm your choice.
+    </para>
+    <para>The <guimenu>Status</guimenu> screen is updated. The
+     <guimenu>Status</guimenu> column now shows the
+     <guimenu>Maintenance Mode</guimenu> icon for the resource
+     and the <guimenu>Operations</guimenu> column next to
+     the resources changes, too.</para>
+   </step>
+   <step>
+    <para>
+     After you have finished the maintenance task for that resource,
+     click the <guimenu>Disable Maintenance Mode</guimenu> icon in the
+     <guimenu>Operations</guimenu> column for that resource.
+    </para>
+    <para>
+     From this point on, the resource will be managed by the &hasi;
+     software again.
+    </para>
+   </step>
+  </procedure>
+  </sect2>
+
+<!--taroth 2016-10-31: updated until here-->
+ <sect2 xml:id="sec.conf.hawk2.maint.nodes">
+  <title>Applying Maintenance Mode to Nodes</title>
+   <para>
+    Sometimes it is necessary to put single nodes into maintenance mode.
+   </para>
+  <procedure>
+    <step>
+    <para>
+     Start a Web browser and log in to the cluster as described in
+     <xref linkend="sec.conf.hawk2.login"/>.
+    </para>
+   </step>
+   <step>
+    <para>
+     In the left navigation bar, select <guimenu>Cluster Status</guimenu>.
+    </para>
+   </step>
+   <step>
+    <para>
+     In one of the individual nodes' views, click the wrench icon next to
+     the node and select <guimenu>Maintenance</guimenu>.
+    </para>
+    <para>
+     This will add the following instance attribute to the node:
+     <literal>maintenance="true"</literal>. The resources previously running
+     on the maintenance-mode node will become <literal>unmanaged</literal>.
+     No new resources will be allocated to the node until it leaves the
+     maintenance mode.
+    </para>
+   </step>
+   <step>
+    <para>
+     To deactivate the maintenance mode, click the wrench icon next to the
+     node and select <guimenu>Ready</guimenu>.
+    </para>
+   </step>
+ </procedure>
+ </sect2>
+ <sect2 xml:id="sec.conf.hawk2.maint.cluster">
+  <title>Applying Maintenance Mode to the Cluster</title>
+  <para>
+   For setting or unsetting the maintenance mode for the whole cluster,
+   proceed as follows:
+  </para>
+  <procedure>
+   <step>
+    <para>
+     Start a Web browser and log in to the cluster as described in
+     <xref linkend="sec.conf.hawk2.login"/>.
+    </para>
+   </step>
+   <step>
+    <para>
+     In the left navigation bar, select <guimenu>Cluster
+      Configuration</guimenu>.
+    </para>
+   </step>
+   <step>
+    <para>
+     In the <guimenu>CRM Configuration</guimenu> group, select the
+     <guimenu>maintenance-mode</guimenu> attribute from the empty drop-down
+     box and click the plus icon to add it.
+    </para>
+   </step>
+   <step>
+    <para>
+     To set <literal>maintenance-mode=true</literal>, activate the check box
+     next to <literal>maintenance-mode</literal> and confirm your changes.
+    </para>
+   </step>
+   <step>
+    <para>
+     After you have finished the maintenance task for the whole cluster,
+     deactivate the check box next to the
+     <literal>maintenance-mode</literal> attribute.
+    </para>
+    <para>
+     From this point on, &hasi; will take over cluster management again.
+    </para>
+   </step>
+  </procedure>
+ </sect2>
+ </sect1>
