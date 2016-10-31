@@ -29,26 +29,25 @@
    &hawk2; provides the following possibilities to view past events on the
    cluster (on different levels and in varying detail):
   </para>
- 
+
  <itemizedlist>
   <listitem>
    <para>
-    FIXME
+    <xref linkend="sec.conf.hawk2.history.recent"/>
    </para>
   </listitem>
   <listitem>
    <para>
-    FIXME
+    <xref linkend="sec.conf.hawk2.history.explorer"/>
    </para>
   </listitem>
   <listitem>
    <para>
-    FIXME
+    <xref linkend="sec.conf.hawk2.history.transitions"/>
    </para>
   </listitem>
  </itemizedlist>
- 
- 
+
  <sect2 xml:id="sec.conf.hawk2.history.recent">
   <title>Viewing Recent Events of Nodes or Resources</title>
   <procedure>
@@ -87,7 +86,7 @@
        <remark>taroth 2016-10-28: why does the label differ for resources/nodes? 
         TODO: file bug report</remark>
      </para>
-      <para>&hawk2; open a new window and displays a table view of the latest
+      <para>&hawk2; opens a new window and displays a table view of the latest
        events.</para>
      </step>
     </substeps>
@@ -95,49 +94,123 @@
   </procedure>
  </sect2>
  <sect2 xml:id="sec.conf.hawk2.history.explorer">
-  <title>Using the History Explorer</title>
+  <title>Using the History Explorer for Cluster Reports</title>
   <para>
-   The <guimenu>History Explorer</guimenu> provides transition information
-   for a time frame that you can define. It also lists its previous runs
-   and allows you to <guimenu>Delete</guimenu> reports that you no longer
-   need. <remark>taroth 2016-10-28: check with krig if it still uses hb_report
-   or if it has switched to crm report meanwhile</remark>
-   The <guimenu>History Explorer</guimenu> uses the information
-   provided by <literal>hb_report</literal>. You can also upload an
-   <literal>hb_report</literal> archive that has been created offline (on a
-   different cluster) and view the respective transitions with the
-   <guimenu>History Explorer</guimenu>. See
-   <xref linkend="pro.ha.config.hawk.history.explorer.offline"/>.
-  </para>
+   The <guimenu>History Explorer</guimenu> allows you to create detailed
+   cluster reports and view transition information. It provides the following
+   options:</para>
+  <variablelist>
+   <varlistentry>
+    <term><guimenu>Generate</guimenu></term>
+    <listitem>
+     <para>Create a cluster report for a certain time. &hawk2; calls
+      the <command>crm report</command> command to generate the report.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><guimenu>Upload</guimenu></term>
+    <listitem>
+     <para>Allows you to upload <literal>crm report</literal> archives that
+      have either been created with the &crmshell; directly or even on a different
+      cluster. For details, see FIXME.</para>
+    </listitem>
+   </varlistentry>
+  </variablelist>
+  <para>After report have been generated or uploaded, they are shown below
+   <guimenu>Reports</guimenu>. From the list of reports, you
+  can show a report's details, download or delete the report.</para>
+
+  <para>If you choose <guimenu>Show</guimenu>, &hawk2; displays the following
+  details:</para>
+  <itemizedlist xml:id="il.hawk2.history.report.details">
+   <title>Report Details in History Explorer</title>
+   <listitem>
+    <para>Name of the report.</para>
+   </listitem>
+   <listitem>
+    <para>Start time of the report.</para>
+   </listitem>
+   <listitem>
+    <para>End time of the report.</para>
+   </listitem>
+   <listitem>
+    <para>Number of transitions plus time line of all transitions in the cluster
+     that are covered by the report. To learn how to view more details for a
+     transition, see <xref linkend="sec.conf.hawk2.history.transitions"/>.</para>
+   </listitem>
+   <listitem>
+    <para>Node events covered by the report.</para>
+   </listitem>
+   <listitem>
+    <para>Resource events covered by the report.</para>
+   </listitem>
+  </itemizedlist>
+
   <procedure xml:id="pro.hawk2.history.report">
-   <title>Generating a Cluster Report</title>
+   <title>Generating or Uploading a Cluster Report</title>
    <step>
     <para>Log in to &hawk2;:</para>
     <screen>https://<replaceable>HAWKSERVER</replaceable>:7630/</screen>
    </step>
    <step>
-    <para>
-     In the left navigation bar, select <guimenu>History</guimenu>.
-    </para>
-    <para>The <guimenu>History Explorer</guimenu> screen opens. It displays 
-    two tabs: <guimenu>Generate</guimenu> and <guimenu>Upload</guimenu>.
-    <remark>taroth 2016-10-28: add screenshot</remark></para>
-   </step>
-<!--taroth 2016-10-28: updated until here-->
-   <step>
-    <para>To generate a report 
-     By default, the period to explore is set to the last hour. To
-     modify this, set another <guimenu>Start Time</guimenu> and <guimenu>End
-      Time</guimenu>.
-    </para>
+    <para> In the left navigation bar, select <guimenu>History</guimenu>. </para>
+    <para>The <guimenu>History Explorer</guimenu> screen opens in the
+     <guimenu>Generate</guimenu> view. By default, the suggested time frame for
+     a report is the last hour.</para>
    </step>
    <step>
-    <para>
-     Click <guimenu>Display</guimenu> to start collecting transition data.
+    <para>To create a cluster report:</para>
+    <substeps>
+     <step>
+      <para>To immediately start a report, click <guimenu>Generate</guimenu>.
+      </para>
+     </step>
+     <step>
+      <para>To modify the time frame for the report, click anywhere on the
+       suggested time frame and select another option from the drop-down list
+       that opens. It also allows you to enter a <guimenu>Custom</guimenu> start
+       date, end date and hour, respectively. To start the report, click
+        <guimenu>Generate</guimenu>. </para>
+     </step>
+    </substeps>
+    <para>After the report has finished, it is shown below
+     <guimenu>Reports</guimenu>.</para>
+   </step>
+   <step>
+    <para>To upload a cluster report, the <command>crm report</command> archive
+    must be located on a file system that you can access with &hawk2;. Proceed as
+    follows:</para>
+    <substeps>
+     <step>
+      <para>Switch to the <guimenu>Upload</guimenu> tab.
+       </para>
+     </step>
+     <step>
+      <para><guimenu>Browse</guimenu> for the cluster report archive and click
+       <guimenu>Upload</guimenu>.
+      </para>
+     </step>
+    </substeps>
+    <para>After the report is uploaded, it is shown below
+     <guimenu>Reports</guimenu>.
     </para>
+   </step>
+   <step>
+    <para>To download or delete a report, click the respective icon in the
+      <guimenu>Operations</guimenu> column next to it. </para>
+   </step>
+   <step>
+    <para>To view <xref linkend="il.hawk2.history.report.details"
+      xrefstyle="select:title"/>, click the report's name or select
+      <guimenu>Show</guimenu> from the <guimenu>Operations</guimenu> column.
+    </para>
+   </step>
+   <step>
+    <para>Return to the list of reports by clicking the
+      <guimenu>Reports</guimenu> button.</para>
    </step>
   </procedure>
-  <figure>
+ <!-- <figure>
    <title>&hawk2;&mdash;History Report</title>
    <mediaobject>
     <imageobject role="fo">
@@ -147,183 +220,130 @@
      <imagedata fileref="hawk-history-report.png" width="90%" format="PNG"/>
     </imageobject>
    </mediaobject>
-  </figure>
-  <para>
-   The following information is displayed:
-  </para>
-  <variablelist xml:id="vl.hawk.history.results">
-   <title>History Explorer Results</title>
+  </figure>-->
+ </sect2>
+ <sect2 xml:id="sec.conf.hawk2.history.transitions">
+  <title>Viewing Transition Details in the History Explorer</title>
+  <para>For each transition, the cluster saves a copy of the state which it
+   provides as input to the policy engine (PE). The path to this archive is logged.
+   All <filename>pe-input*</filename> files are generated on the Designated
+   Coordinator (DC). As the DC can change in a cluster, there may be
+   <filename>pe-input*</filename> files from several nodes.
+   Any <filename>pe-input*</filename> files show what the PE
+   <emphasis>planned</emphasis> to do.</para>
+  <para>In &hawk2;, you can display the name of
+   each <filename>pe-input*</filename> file plus the time and node on which it was
+   created. The <guimenu>History Explorer</guimenu> can visualize the
+   following details taken from the respective <filename>pe-input*</filename>
+   file:</para>
+
+  <variablelist xml:id="vl.hawk2.history.transition.details">
+   <title>Transition Details in the History Explorer</title>
    <varlistentry>
-    <term><guimenu>Time</guimenu>
-    </term>
+    <term><guimenu>Details</guimenu>
+   </term>
     <listitem>
-     <para>
-      The time line of all past transitions in the cluster.
+     <para>Shows snippets of logging data that belongs to the transition.
+      Displays the output of the following command:
      </para>
-    </listitem>
-   </varlistentry>
-   <!-- taroth 2014-08-04: https://fate.suse.com/314392: hawk:
-    Display warning for transitions handled by different PE versions-->
-   <varlistentry>
-    <term>Information Icon</term>
-    <listitem>
-     <para>
-      In some cases, an information icon is displayed between the
-      <guimenu>Time</guimenu> and <guimenu>PE Input</guimenu> columns. Hover
-      the mouse pointer over the icon to display one of the following
-      messages:
-     </para>
-     <itemizedlist>
-      <listitem>
-       <para>
-        <literal>Input created by different Pacemaker version</literal>. In
-        that case, the transition graphs are only approximate since they
-        have been generated by a different PE version.
-       </para>
-      </listitem>
-      <listitem>
-       <para>
-        <literal>Pacemaker version not present in PE Input</literal>. This
-        happens during cluster start, before a DC is elected.
-       </para>
-      </listitem>
-     </itemizedlist>
+     <screen>crm history transition <replaceable>peinput</replaceable></screen>
+     <para>(including the resource agents' log messages)</para>
     </listitem>
    </varlistentry>
    <varlistentry>
-    <term><guimenu>PE Input</guimenu>/<guimenu>Node</guimenu>
+    <term><guimenu>Configuration</guimenu>
     </term>
     <listitem>
-     <para>
-      The <filename>pe-input*</filename> file for each transition and the
-      node on which it was generated. For each transition, the cluster saves
-      a copy of the state which is provided to the policy engine as input.
-      The path to this archive is logged. The <filename>pe-input*</filename>
-      files are only generated on the Designated Coordinator (DC), but as
-      the DC can change, there may be <filename>pe-input*</filename> files
-      from several nodes. The files show what the Policy Engine (PE)
-      <emphasis>planned</emphasis> to do.
+     <para>Shows the cluster configuration at the time that the
+      <filename>pe-input*</filename> file was created.
      </para>
-    </listitem>
-   </varlistentry>
-   <varlistentry>
-    <term><guimenu>Details</guimenu>/<guimenu>Full Log</guimenu>
-    </term>
-    <!--fate#314395 (SP3)-->
-    <listitem>
-     <para>
-      Opens a pop-up window with snippets of logging data that belong to
-      that particular transition. Different amounts of details are
-      available: Clicking <guimenu>Details</guimenu> displays the output of
-      <command>crm history transition</command>
-      <replaceable>peinput</replaceable> (including the resource agents' log
-      messages). <guimenu>Full Log</guimenu> also includes details from the
-      <systemitem>pengine</systemitem>, <systemitem>crmd</systemitem>, and
-      <systemitem>lrmd</systemitem> and is equivalent to <command>crm
-       history transition log</command> <replaceable>peinput</replaceable>.
-     </para>
-    </listitem>
-   </varlistentry>
-   <varlistentry>
-    <term><guimenu>Graph</guimenu>/<guimenu>XML</guimenu>
-    </term>
-    <listitem>
-     <para>
-      A graph and an XML representation of each transition. If you choose to
-      show the <guimenu>Graph</guimenu>, the PE is reinvoked (using the
-      <filename>pe-input*</filename> files), and generates a graphical
-      visualization of the transition. Alternatively, you can view the XML
-      representation of the graph.
-     </para>
-     <figure>
-      <title>&hawk2; History Report&mdash;Transition Graph</title>
-      <mediaobject>
-       <imageobject role="fo">
-        <imagedata fileref="hawk-history-graph.png" width="80%" format="PNG"/>
-       </imageobject>
-       <imageobject role="html">
-        <imagedata fileref="hawk-history-graph.png" width="70%" format="PNG"/>
-       </imageobject>
-      </mediaobject>
-     </figure>
     </listitem>
    </varlistentry>
    <varlistentry>
     <term><guimenu>Diff</guimenu>
     </term>
-    <!--fate#314389 (SP3)-->
     <listitem>
-     <para>
-      If two or more pe-inputs are listed, a <guimenu>Diff</guimenu> link
-      will appear to the right of each pair of pe-inputs. Clicking it
-      displays the difference of configuration and status.
-     </para>
-     <!--taroth 2013-03-28: commenting because of bnc#807503, line numbers are no longer
-      diplayed
-      <figure>
-      <title>&hawk2; History Report&mdash;Diff</title>
-      <mediaobject>
-      <imageobject role="fo">
-      <imagedata fileref="hawk-history-diff.png" width="80%" format="PNG"/>
-      </imageobject>
-      <imageobject role="html">
-      <imagedata fileref="hawk-history-diff.png" width="70%" format="PNG"/>
-      </imageobject>
-      </mediaobject>
-      </figure>-->
+     <para>Shows the differences of configuration and status between the selected
+      <filename>pe-input*</filename> file and the following one.</para>
     </listitem>
    </varlistentry>
+   <varlistentry>
+    <term><guimenu>Log</guimenu></term>
+    <listitem>
+     <para>Shows snippets of logging data that belongs to the transition.
+     Displays the output of the following command:</para>
+     <screen>crm history transition log <replaceable>peinput</replaceable></screen>
+     <para>This includes details from the <systemitem>pengine</systemitem>,
+       <systemitem>crmd</systemitem>, and <systemitem>lrmd</systemitem>.</para>
+    </listitem>
+   </varlistentry>
+   <varlistentry>
+    <term><guimenu>Graph</guimenu>
+   </term>
+    <listitem>
+     <para> A graphical representation of the transition. If you choose
+      to show the <guimenu>Graph</guimenu>, the PE is reinvoked (using the
+       <filename>pe-input*</filename> files), and generates a graphical
+      visualization of the transition.</para>
+     </listitem>
+   </varlistentry>
   </variablelist>
-  <!--taroth 2014-07-30: https://fate.suse.com/313354: Hawk
-   off-line, stand-alone history explorer-->
-  <procedure xml:id="pro.ha.config.hawk.history.explorer.offline">
-   <title>Using the <guimenu>History Explorer</guimenu> Offline</title>
-   <para>
-    If you have &hawk2; running on any machine, you can also use the
-    <guimenu>History Explorer</guimenu> <quote>offline</quote>, that means
-    to view and analyze the transitions of clusters that you are currently
-    not connected to. All you need is a TAR archive with an
-    <literal>hb_report</literal> generated on a &productname; cluster. To
-    upload and analyze it with the <guimenu>History Explorer</guimenu>
-    proceed as follows:
+  <figure>
+   <title>&hawk2; History Report&mdash;Transition Graph</title>
+   <mediaobject>
+    <imageobject role="fo">
+     <imagedata fileref="hawk2-history-graph.png" width="80%" format="PNG"/>
+    </imageobject>
+    <imageobject role="html">
+     <imagedata fileref="hawk2-history-graph.png" width="70%" format="PNG"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
+
+  <procedure xml:id="pro.hawk2.history.transitions">
+   <title>Viewing Transition Details</title>
+   <step>
+    <para>Log in to &hawk2;:</para>
+    <screen>https://<replaceable>HAWKSERVER</replaceable>:7630/</screen>
+   </step>
+   <step>
+    <para> In the left navigation bar, select <guimenu>History</guimenu>.</para>
+    <para>If reports have already been generated or uploaded, they are shown in
+     the list of <guimenu>Reports</guimenu>. Otherwise generate or upload a report
+     as described in <xref linkend="pro.hawk2.history.report"
+     xrefstyle="select:label"/>.
+    </para>
+   </step>
+   <step>
+    <para>Click the report's name or select <guimenu>Show</guimenu> from the
+     <guimenu>Operations</guimenu> column to view
+     <xref linkend="il.hawk2.history.report.details" xrefstyle="select:title"/>.
+    </para>
+   </step>
+   <step>
+    <para>To access the transition details, you need to select a transition
+     point in the transition time line that is shown below. Use the
+      <guimenu>Previous</guimenu> and <guimenu>Next</guimenu> buttons and the
+      <guimenu>Zoom In</guimenu> and <guimenu>Zoom Out</guimenu> icons to find
+     the transition that you are interested in.</para></step>
+    <step><para>Hover the mouse pointer over a transition point in the time line
+     to display the name of the <filename>pe-input*</filename> file plus the time
+     and node on which it was created.
    </para>
-   <step>
-    <para>
-     Start a Web browser and log in to the &hawk2; Web interface as
-     described in <xref linkend="sec.conf.hawk2.login"/>.
-    </para>
    </step>
    <step>
-    <para>
-     In the left navigation bar, select <guimenu>History Explorer</guimenu>.
-    </para>
-    <para>
-     It shows an entry <guimenu>Upload hb_report tarball</guimenu>.
-    </para>
-    <figure>
-     <title>&hawk2;&mdash;Offline Use of History Explorer</title>
-     <mediaobject>
-      <imageobject role="fo">
-       <imagedata fileref="hawk-history-offline.png" width="80%" format="PNG"/>
-      </imageobject>
-      <imageobject role="html">
-       <imagedata fileref="hawk-history-offline.png" width="70%" format="PNG"/>
-      </imageobject>
-     </mediaobject>
-    </figure>
+    <para>To view <xref linkend="vl.hawk2.history.transition.details"
+    xrefstyle="select:title"/>, click the transition point for which you
+    want to know the details.</para>
    </step>
    <step>
-    <para>
-     Click <guimenu>Browse</guimenu> and select the
-     <filename>hb_report</filename> archive to upload from your file system.
-    </para>
+    <para>Click any of the buttons described in <xref
+      linkend="vl.hawk2.history.transition.details" xrefstyle="select:label"/>
+     to show the contents.</para>
    </step>
    <step>
-    <para>
-     Click <guimenu>Explore</guimenu> to start the analysis of the archive
-     and to display the information listed in
-     <xref linkend="vl.hawk.history.results"/>.
-    </para>
+    <para>To return to the list of reports, click the <guimenu>Reports</guimenu>
+     button.</para>
    </step>
   </procedure>
  </sect2> 
