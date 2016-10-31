@@ -70,8 +70,8 @@
       click the arrow down button and select <guimenu>Recent Events</guimenu>.
      </para>
       <para>&hawk2; open a new window and displays a table view of the latest
-       events.</para>
-     </step>
+      events.</para>
+      </step>
     </substeps>
    </step>
    <step>
@@ -87,7 +87,19 @@
         TODO: file bug report</remark>
      </para>
       <para>&hawk2; opens a new window and displays a table view of the latest
-       events.</para>
+      events.</para>
+      <informalfigure>
+       <mediaobject>
+        <imageobject role="fo">
+         <imagedata fileref="hawk2-node-events.png" width="100%"
+          format="PNG"/>
+        </imageobject>
+        <imageobject role="html">
+         <imagedata fileref="hawk2-node-events.png" width="90%"
+          format="PNG"/>
+        </imageobject>
+       </mediaobject>
+      </informalfigure>
      </step>
     </substeps>
    </step>
@@ -112,39 +124,26 @@
     <listitem>
      <para>Allows you to upload <literal>crm report</literal> archives that
       have either been created with the &crmshell; directly or even on a different
-      cluster. For details, see FIXME.</para>
+      cluster.</para>
     </listitem>
    </varlistentry>
   </variablelist>
   <para>After report have been generated or uploaded, they are shown below
    <guimenu>Reports</guimenu>. From the list of reports, you
-  can show a report's details, download or delete the report.</para>
-
-  <para>If you choose <guimenu>Show</guimenu>, &hawk2; displays the following
-  details:</para>
-  <itemizedlist xml:id="il.hawk2.history.report.details">
-   <title>Report Details in History Explorer</title>
-   <listitem>
-    <para>Name of the report.</para>
-   </listitem>
-   <listitem>
-    <para>Start time of the report.</para>
-   </listitem>
-   <listitem>
-    <para>End time of the report.</para>
-   </listitem>
-   <listitem>
-    <para>Number of transitions plus time line of all transitions in the cluster
-     that are covered by the report. To learn how to view more details for a
-     transition, see <xref linkend="sec.conf.hawk2.history.transitions"/>.</para>
-   </listitem>
-   <listitem>
-    <para>Node events covered by the report.</para>
-   </listitem>
-   <listitem>
-    <para>Resource events covered by the report.</para>
-   </listitem>
-  </itemizedlist>
+   can show a report's details, download or delete the report.</para>
+  <figure>
+   <title>&hawk2;&mdash;History Explorer Main View</title>
+   <mediaobject>
+    <imageobject role="fo">
+     <imagedata fileref="hawk2-history-explorer-main.png" width="100%"
+      format="PNG"/>
+    </imageobject>
+    <imageobject role="html">
+     <imagedata fileref="hawk2-history-explorer-main.png" width="90%"
+      format="PNG"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
 
   <procedure xml:id="pro.hawk2.history.report">
    <title>Generating or Uploading a Cluster Report</title>
@@ -167,8 +166,8 @@
      </step>
      <step>
       <para>To modify the time frame for the report, click anywhere on the
-       suggested time frame and select another option from the drop-down list
-       that opens. It also allows you to enter a <guimenu>Custom</guimenu> start
+       suggested time frame and select another option from the drop-down list.
+       You can also enter a <guimenu>Custom</guimenu> start
        date, end date and hour, respectively. To start the report, click
         <guimenu>Generate</guimenu>. </para>
      </step>
@@ -196,31 +195,56 @@
     </para>
    </step>
    <step>
-    <para>To download or delete a report, click the respective icon in the
-      <guimenu>Operations</guimenu> column next to it. </para>
+    <para>To download or delete a report, click the respective icon next to the
+     report in the <guimenu>Operations</guimenu> column.</para>
    </step>
    <step>
     <para>To view <xref linkend="il.hawk2.history.report.details"
       xrefstyle="select:title"/>, click the report's name or select
       <guimenu>Show</guimenu> from the <guimenu>Operations</guimenu> column.
     </para>
+    <informalfigure>
+     <mediaobject>
+     <imageobject role="fo">
+      <imagedata fileref="hawk2-history-report-details.png" width="100%"
+       format="PNG"/>
+     </imageobject>
+     <imageobject role="html">
+      <imagedata fileref="hawk2-history-report-details.png" width="90%"
+       format="PNG"/>
+     </imageobject>
+     </mediaobject>
+    </informalfigure>
    </step>
    <step>
     <para>Return to the list of reports by clicking the
       <guimenu>Reports</guimenu> button.</para>
    </step>
   </procedure>
- <!-- <figure>
-   <title>&hawk2;&mdash;History Report</title>
-   <mediaobject>
-    <imageobject role="fo">
-     <imagedata fileref="hawk-history-report.png" width="100%" format="PNG"/>
-    </imageobject>
-    <imageobject role="html">
-     <imagedata fileref="hawk-history-report.png" width="90%" format="PNG"/>
-    </imageobject>
-   </mediaobject>
-  </figure>-->
+  <itemizedlist xml:id="il.hawk2.history.report.details">
+   <title>Report Details in History Explorer</title>
+   <listitem>
+    <para>Name of the report.</para>
+   </listitem>
+   <listitem>
+    <para>Start time of the report.</para>
+   </listitem>
+   <listitem>
+    <para>End time of the report.</para>
+   </listitem>
+   <listitem>
+    <para>Number of transitions plus time line of all transitions in the cluster
+     that are covered by the report. To learn how to view more details for a
+     transition, see <xref linkend="sec.conf.hawk2.history.transitions"
+      xrefstyle="select:label"/>.</para>
+   </listitem>
+   <listitem>
+    <para>Node events.</para>
+   </listitem>
+   <listitem>
+    <para>Resource events.</para>
+   </listitem>
+  </itemizedlist>
  </sect2>
  <sect2 xml:id="sec.conf.hawk2.history.transitions">
   <title>Viewing Transition Details in the History Explorer</title>
@@ -233,8 +257,8 @@
    <emphasis>planned</emphasis> to do.</para>
   <para>In &hawk2;, you can display the name of
    each <filename>pe-input*</filename> file plus the time and node on which it was
-   created. The <guimenu>History Explorer</guimenu> can visualize the
-   following details taken from the respective <filename>pe-input*</filename>
+   created. In addition, the <guimenu>History Explorer</guimenu> can visualize the
+   following details, based on the respective <filename>pe-input*</filename>
    file:</para>
 
   <variablelist xml:id="vl.hawk2.history.transition.details">
@@ -244,10 +268,10 @@
    </term>
     <listitem>
      <para>Shows snippets of logging data that belongs to the transition.
-      Displays the output of the following command:
+      Displays the output of the following command (including the resource agents'
+      log messages):
      </para>
      <screen>crm history transition <replaceable>peinput</replaceable></screen>
-     <para>(including the resource agents' log messages)</para>
     </listitem>
    </varlistentry>
    <varlistentry>
@@ -281,24 +305,13 @@
     <term><guimenu>Graph</guimenu>
    </term>
     <listitem>
-     <para> A graphical representation of the transition. If you choose
-      to show the <guimenu>Graph</guimenu>, the PE is reinvoked (using the
+     <para>Shows a graphical representation of the transition. If you click
+      <guimenu>Graph</guimenu>, the PE is reinvoked (using the
        <filename>pe-input*</filename> files), and generates a graphical
       visualization of the transition.</para>
      </listitem>
    </varlistentry>
   </variablelist>
-  <figure>
-   <title>&hawk2; History Report&mdash;Transition Graph</title>
-   <mediaobject>
-    <imageobject role="fo">
-     <imagedata fileref="hawk2-history-graph.png" width="80%" format="PNG"/>
-    </imageobject>
-    <imageobject role="html">
-     <imagedata fileref="hawk2-history-graph.png" width="70%" format="PNG"/>
-    </imageobject>
-   </mediaobject>
-  </figure>
 
   <procedure xml:id="pro.hawk2.history.transitions">
    <title>Viewing Transition Details</title>
@@ -316,36 +329,48 @@
    </step>
    <step>
     <para>Click the report's name or select <guimenu>Show</guimenu> from the
-     <guimenu>Operations</guimenu> column to view
-     <xref linkend="il.hawk2.history.report.details" xrefstyle="select:title"/>.
+     <guimenu>Operations</guimenu> column to open the
+     <xref linkend="il.hawk2.history.report.details"/>.
     </para>
    </step>
    <step>
     <para>To access the transition details, you need to select a transition
      point in the transition time line that is shown below. Use the
-      <guimenu>Previous</guimenu> and <guimenu>Next</guimenu> buttons and the
+      <guimenu>Previous</guimenu> and <guimenu>Next</guimenu> icons and the
       <guimenu>Zoom In</guimenu> and <guimenu>Zoom Out</guimenu> icons to find
      the transition that you are interested in.</para></step>
-    <step><para>Hover the mouse pointer over a transition point in the time line
-     to display the name of the <filename>pe-input*</filename> file plus the time
-     and node on which it was created.
-   </para>
+    <step>
+     <para>To display the name of a <filename>pe-input*</filename> file plus the
+      time and node on which it was created, hover the mouse pointer over a
+      transition point in the time line.
+    </para>
    </step>
    <step>
-    <para>To view <xref linkend="vl.hawk2.history.transition.details"
-    xrefstyle="select:title"/>, click the transition point for which you
-    want to know the details.</para>
+    <para>To view the <xref linkend="vl.hawk2.history.transition.details"/>,
+     click the transition point for which you want to know more. 
+     </para>
    </step>
-   <step>
-    <para>Click any of the buttons described in <xref
-      linkend="vl.hawk2.history.transition.details" xrefstyle="select:label"/>
-     to show the contents.</para>
-   </step>
+   <step><para>To show <guimenu>Details</guimenu>, <guimenu>Configuration</guimenu>,
+    <guimenu>Diff</guimenu>, <guimenu>Logs</guimenu> or <guimenu>Graph</guimenu>, 
+    click the respective buttons to show the contents described in
+    <xref linkend="vl.hawk2.history.transition.details"/>.</para></step>
    <step>
     <para>To return to the list of reports, click the <guimenu>Reports</guimenu>
      button.</para>
    </step>
   </procedure>
+  <figure>
+   <title>&hawk2; History Report&mdash;Transition Graph</title>
+   <mediaobject>
+    <imageobject role="fo">
+     <imagedata fileref="hawk2-history-graph.png" width="100%" format="PNG"/>
+    </imageobject>
+    <imageobject role="html">
+     <imagedata fileref="hawk2-history-graph.png" width="90%" format="PNG"/>
+    </imageobject>
+   </mediaobject>
+  </figure>
+  
  </sect2> 
 </sect1>
  
