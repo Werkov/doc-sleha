@@ -317,8 +317,8 @@
    </step>
    <step>
     <para>In the left navigation bar, select <menuchoice>
-      <guimenu>Manage</guimenu>
       <guimenu>Configuration</guimenu>
+      <guimenu>Cluster Configuration</guimenu>
      </menuchoice>.</para>
     <para>The <guimenu>Cluster Configuration</guimenu> screen opens. It displays the
      global cluster options and their current values. </para>
