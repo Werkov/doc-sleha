@@ -316,10 +316,10 @@
     is set to <literal>true</literal>. If no &stonith; resources have been
     defined, the cluster will refuse to start any resources. Configure one or
     more &stonith; resources to complete the &stonith; setup. To add a &stonith;
-    resource for SBD or for libvirt (&kvm;/&xen;), the easiest way is to use
-    the &hawk2; wizard (see <xref
-     linkend="sec.conf.hawk2.rsc.wizard"/>). While
-    &stonith; resources are configured similarly to other resources, their behavior
+    resource for SBD, for libvirt (&kvm;/&xen;) or for vCenter/ESX Server,
+    the easiest way is to use the &hawk2; wizard (see <xref
+    linkend="sec.conf.hawk2.rsc.wizard"/>). While &stonith; resources are
+    configured similarly to other resources, their behavior
     is different in some respects. For details refer
     to <xref linkend="sec.ha.fencing.config"/>.
    </para>
@@ -393,7 +393,7 @@
     </step>
    </procedure>
    <para>
-    To complete your fencing configuration, add constraints. 
+    To complete your fencing configuration, add constraints.
     For more details, refer to <xref linkend="cha.ha.fencing"/>.
    </para>
   </sect2>
