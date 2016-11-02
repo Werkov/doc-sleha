@@ -65,7 +65,7 @@
     <para>
      In the left navigation bar, select <guimenu>Status</guimenu>.</para>
     </step>
-     <step>
+    <step>
      <para>
      On the <guimenu>Resources</guimenu> tab, select the resource you want to put
       in maintenance mode.
@@ -78,15 +78,18 @@
     </para>
     <para>The <guimenu>Status</guimenu> screen is updated. The
      <guimenu>Status</guimenu> column now shows the
-     <guimenu>Maintenance Mode</guimenu> icon for the resource
-     and the <guimenu>Operations</guimenu> column next to
+     <guimenu>Maintenance Mode</guimenu> icon for the resource. The
+     <guimenu>Operations</guimenu> column next to
      the resources changes, too.</para>
    </step>
    <step>
-    <para>
-     After you have finished the maintenance task for that resource,
-     click the <guimenu>Disable Maintenance Mode</guimenu> icon in the
-     <guimenu>Operations</guimenu> column for that resource.
+    <para>Finish the maintenance task for the resource.
+    </para>
+   </step>
+   <step>
+    <para>To deactivate maintenance mode for the resource, got to the
+     <guimenu>Operations</guimenu> column and click <guimenu>Disable Maintenance
+      Mode</guimenu>.
     </para>
     <para>
      From this point on, the resource will be managed by the &hasi;
@@ -103,35 +106,39 @@
     Sometimes it is necessary to put single nodes into maintenance mode.
    </para>
   <procedure>
-    <step>
-    <para>
-     Start a Web browser and log in to the cluster as described in
-     <xref linkend="sec.conf.hawk2.login"/>.
-    </para>
+   <step>
+    <para>Log in to &hawk2;:</para>
+    <screen>https://<replaceable>HAWKSERVER</replaceable>:7630/</screen>
    </step>
    <step>
     <para>
-     In the left navigation bar, select <guimenu>Cluster Status</guimenu>.
-    </para>
+     In the left navigation bar, select <guimenu>Status</guimenu> and switch
+     to the <guimenu>Nodes</guimenu> tab.</para>
+    <para>
+     On the <guimenu>Nodes</guimenu> tab, the <guimenu>Maintenance</guimenu>
+     column shows the status of the node: A red icon means that the node is in
+     maintenance mode. A green icon means that the node is in normal
+     mode and can be switched to maintenance mode.
+     </para>
    </step>
    <step>
-    <para>
-     In one of the individual nodes' views, click the wrench icon next to
-     the node and select <guimenu>Maintenance</guimenu>.
-    </para>
-    <para>
+    <para>To switch a node to maintenance mode, click the respective
+     icon next to the resource and confirm your choice. </para>
+      <para>
      This will add the following instance attribute to the node:
      <literal>maintenance="true"</literal>. The resources previously running
-     on the maintenance-mode node will become <literal>unmanaged</literal>.
+     on this node will become <literal>unmanaged</literal>.
      No new resources will be allocated to the node until it leaves the
      maintenance mode.
     </para>
    </step>
    <step>
-    <para>
-     To deactivate the maintenance mode, click the wrench icon next to the
-     node and select <guimenu>Ready</guimenu>.
+    <para>Finish the maintenance task for the node.
     </para>
+   </step>
+   <step>
+    <para>To deactivate the maintenance mode, click the maintenance icon next
+     to the node and confirm your choice. </para>
    </step>
  </procedure>
  </sect2>
@@ -143,38 +150,39 @@
   </para>
   <procedure>
    <step>
-    <para>
-     Start a Web browser and log in to the cluster as described in
-     <xref linkend="sec.conf.hawk2.login"/>.
-    </para>
+    <para>Log in to &hawk2;:</para>
+    <screen>https://<replaceable>HAWKSERVER</replaceable>:7630/</screen>
    </step>
    <step>
     <para>
-     In the left navigation bar, select <guimenu>Cluster
-      Configuration</guimenu>.
+     In the left navigation bar, select <guimenu>Cluster Configuration</guimenu>.
     </para>
-   </step>
-   <step>
+    </step>
+    <step>
     <para>
-     In the <guimenu>CRM Configuration</guimenu> group, select the
-     <guimenu>maintenance-mode</guimenu> attribute from the empty drop-down
+     In the <guimenu>Cluster Configuration</guimenu> part of the screen, select
+     the <guimenu>maintenance-mode</guimenu> attribute from the empty drop-down
      box and click the plus icon to add it.
     </para>
    </step>
    <step>
     <para>
-     To set <literal>maintenance-mode=true</literal>, activate the check box
-     next to <literal>maintenance-mode</literal> and confirm your changes.
+     To put the cluster into maintenance mode, set the value of
+     <guimenu>maintenance-mode</guimenu> to <literal>Yes</literal> and
+     apply your changes.
     </para>
    </step>
    <step>
-    <para>
-     After you have finished the maintenance task for the whole cluster,
-     deactivate the check box next to the
-     <literal>maintenance-mode</literal> attribute.
+    <para>Finish the maintenance task for the whole cluster.
+    </para>
+   </step>
+   <step>
+    <para>To deactivate maintenance mode for the cluster,
+     set the value of <guimenu>maintenance-mode</guimenu> to
+     <literal>no</literal> and apply this change.
     </para>
     <para>
-     From this point on, &hasi; will take over cluster management again.
+     From this point on, the &hasi; will take over cluster management again.
     </para>
    </step>
   </procedure>
