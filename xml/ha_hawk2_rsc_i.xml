@@ -74,7 +74,10 @@
    <varlistentry>
     <term>Utilization</term>
     <listitem>
-     <para><remark>taroth 2016-10-25: FIXME: add content</remark></para>
+    <para>Tell the CRM which capacity your a certain resource requires from a
+     node. For more information, refer to <xref
+      linkend="sec.config.hawk2.utilization"/>.
+    </para>
     </listitem>
    </varlistentry>
   </variablelist>
@@ -214,7 +217,9 @@
       configuration. A message at the top of the screen shows if the
       action has been successful. </para>
      <para>To adjust the parameters, operations, or meta attributes,
-     refer to <xref linkend="sec.conf.hawk2.rsc.modify"/>.
+     refer to <xref linkend="sec.conf.hawk2.rsc.modify"/>. To configure
+      <guimenu>Utilization</guimenu> attributes for the resource, see
+      <xref linkend="pro.hawk2.utilization.rsc"/>.
      </para>
     </step>
    </procedure>
