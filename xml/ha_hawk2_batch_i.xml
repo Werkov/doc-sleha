@@ -67,8 +67,18 @@
    <step>
     <para> To activate the batch mode, select <guimenu>Batch</guimenu> from the top-level row. </para>
     <para>An additional bar appears below the top-level row. It indicates that batch mode is active
-     and contains links to actions that you can execute in batch mode. <remark>taroth 2016-10-26:
-      add screenshot?</remark></para>
+    and contains links to actions that you can execute in batch mode.</para>
+    <figure xml:id="fig.hawk2.batch">
+    <title>&hawk2; Batch Mode Activated</title>
+    <mediaobject>
+     <imageobject role="fo">
+      <imagedata fileref="hawk2-batchmode-active.png" width="100%" format="PNG"/>
+     </imageobject>
+     <imageobject role="html">
+      <imagedata fileref="hawk2-batchmode-active.png" width="100%" format="PNG"/>
+     </imageobject>
+    </mediaobject>
+    </figure>
    </step>
    <step>
     <para> While batch mode is active, perform any changes to your cluster, like adding or editing
