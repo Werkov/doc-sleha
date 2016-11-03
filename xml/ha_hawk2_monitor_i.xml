@@ -48,17 +48,13 @@
      <term>Resources</term>
      <listitem>
       <para>Shows the configured resources including their <guimenu>Status</guimenu>,
-       <guimenu>Name</guimenu> (ID), Location (node on which they are running), and resource agent
+       <guimenu>Name</guimenu> (ID), <guimenu>Location</guimenu> (node on which they are running), and resource agent
        <guimenu>Type</guimenu>. From the <guimenu>Operations</guimenu> column,
        you can start or stop a resource, trigger several actions, or view details.
        Actions that can be triggered include to set the resource to maintenance
-       mode, migrate it to a different node, cleanup the resource, show any
+       mode (or remove maintenance mode), migrate it to a different node, clean up the resource, show any
        recent events, or edit the resource.
-       <remark>toms 2016-08-17: Actually, the operations column is a little
-        bit more difficult. If you put your resource into maintenance mode, the
-        first entry (Maintenance) disappears.
-       </remark>
-      </para>
+       </para>
      </listitem>
     </varlistentry>
     <varlistentry>
