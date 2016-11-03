@@ -211,17 +211,12 @@
      <para>In the list of <guimenu>Resources</guimenu>, select the respective resource.</para>
     </step>
     <step>
-     <para><remark>taroth 2015-12-07: krig, is there any way to select which node to migrate the
-       resource to? krig: also, Hawk1 has two options: "Move" (lets you select where to move the rsc
-       to and creates a location constraint with an INFINITY score for the destination node) and
-       "Away from current node" (creates a location constraint with a -INFINITY score for the
-       current node) - is there anything like this with Hawk2? - taroth 2015-12-08: on behalf of
-       krig, filed https://bugzilla.suse.com/show_bug.cgi?id=958386 for this </remark>In the
+     <para>In the
        <guimenu>Operations</guimenu> column click the arrow down button and select
        <guimenu>Migrate</guimenu>.</para>
     </step>
     <step>
-     <para>In the window that appears you have the following choices:</para>
+     <para>In the window that opens you have the following choices:</para>
      <itemizedlist>
       <listitem><para><guimenu>Away from current node</guimenu>: This creates a
        location constraint with a <literal>-INFINITY</literal> score for the
