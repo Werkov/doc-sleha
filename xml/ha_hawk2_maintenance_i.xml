@@ -99,7 +99,6 @@
   </procedure>
   </sect2>
 
-<!--taroth 2016-10-31: updated until here-->
  <sect2 xml:id="sec.conf.hawk2.maint.nodes">
   <title>Applying Maintenance Mode to Nodes</title>
    <para>

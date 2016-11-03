@@ -491,8 +491,7 @@
    </para>
    <note>
     <title>Sub-resources for Clones</title>
-    <para><remark>taroth 2016-1021: check with krig if we need to remove/modify
-     this (due to fate#318316)</remark>
+    <para>
      Clones can either contain a primitive or a group as sub-resources. In
      &hawk2;, sub-resources cannot be created or modified while creating a
      clone. Before adding a clone, create sub-resources and configure them as
@@ -773,7 +772,18 @@
     select <guimenu>Recent Events</guimenu>. The dialog that opens lists recent actions
     performed for the resource. Failures are displayed in red. To view the resource details, 
     click the magnifier icon in the <guimenu>Operations</guimenu> column.
-    <remark>taroth 2016-10-21: add screenshot?</remark></para>
+    <figure>
+     <title>&hawk2;&mdash;Resource Details</title>
+     <mediaobject>
+      <imageobject role="fo">
+       <imagedata fileref="hawk2-rsc-details.png" width="70%" format="PNG"/>
+      </imageobject>
+      <imageobject role="html">
+       <imagedata fileref="hawk2-rsc-details.png" width="60%" format="PNG"/>
+      </imageobject>
+     </mediaobject>
+    </figure>
+    </para>
   </sect2>
  </sect1>
  

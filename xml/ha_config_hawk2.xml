@@ -98,8 +98,6 @@
   <title>Logging In</title>
   <para> The &hawk2; Web interface uses the HTTPS protocol and port
     <literal>7630</literal>. </para>
-  <!--taroth 2015-08-10: fate#318183 (SLE HA 12 SP1)-->
-
    <para>Instead of logging in to an individual cluster node with &hawk2;,
     you can configure a floating, virtual IP address (<literal>IPaddr</literal>
     or <literal>IPaddr2</literal>) as a cluster resource.
@@ -196,8 +194,8 @@
        <listitem>
         <para>
          <guimenu>History</guimenu>: Opens the <guimenu>History Explorer</guimenu>
-         from which you can generate cluster reports.
-         <!--taroth: enable when available - For details, see FIXME.--></para>
+         from which you can generate cluster reports. For details, see
+         <xref linkend="sec.conf.hawk2.history"/>.</para>
        </listitem>
       </itemizedlist>
      </listitem>
