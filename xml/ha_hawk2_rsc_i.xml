@@ -74,7 +74,7 @@
    <varlistentry>
     <term>Utilization</term>
     <listitem>
-    <para>Tell the CRM which capacity your a certain resource requires from a
+    <para>Tell the CRM which capacity a certain resource requires from a
      node. For more information, refer to <xref
       linkend="sec.config.hawk2.utilization"/>.
     </para>
@@ -89,7 +89,8 @@
    <para>
     Sometimes a cluster administrator needs to know the cluster configuration.
     &hawk2; can show the current configuration in &crmshell; syntax, as XML and
-    as a graph. To view the cluster configuration in &crmshell; syntax, select
+    as a graph. To view the cluster configuration in &crmshell; syntax, from the
+    left navigation bar select
     <menuchoice>
      <guimenu>Configuration</guimenu>
      <guimenu>Edit Configuration</guimenu>
@@ -448,7 +449,7 @@
      <para>
       To define the group members, select one or multiple entries in the list
       of <guimenu>Children</guimenu>. Re-sort group members by dragging and dropping them into the
-      order you want using the <quote>handle</quote> icon on the right.
+      order you want by using the <quote>handle</quote> icon on the right.
      </para>
     </step>
     <step>
@@ -490,11 +491,11 @@
     <xref linkend="sec.ha.config.basics.resources.advanced.clones"/>.
    </para>
    <note>
-    <title>Sub-resources for Clones</title>
+    <title>Child Resources for Clones</title>
     <para>
-     Clones can either contain a primitive or a group as sub-resources. In
-     &hawk2;, sub-resources cannot be created or modified while creating a
-     clone. Before adding a clone, create sub-resources and configure them as
+     Clones can either contain a primitive or a group as child resources. In
+     &hawk2;, child resources cannot be created or modified while creating a
+     clone. Before adding a clone, create child resources and configure them as
      desired. For details, refer to
      <xref linkend="sec.conf.hawk2.rsc.primitive"/> or
      <xref linkend="sec.conf.hawk2.rsc.group"/>.
@@ -564,11 +565,11 @@
    </para>
   
    <note>
-    <title>Sub-resources for Multi-state Resources</title>
+    <title>Child Resources for Multi-state Resources</title>
     <para>
-     Multi-state resources can either contain a primitive or a group as sub-resources. In
-     &hawk2;, sub-resources cannot be created or modified while creating a
-     multi-state resource. Before adding a multi-state resource, create sub-resources and configure them as
+     Multi-state resources can either contain a primitive or a group as child resources. In
+     &hawk2;, child resources cannot be created or modified while creating a
+     multi-state resource. Before adding a multi-state resource, create child resources and configure them as
      desired. For details, refer to
      <xref linkend="sec.conf.hawk2.rsc.primitive"/> or
      <xref linkend="sec.conf.hawk2.rsc.group"/>.
@@ -698,7 +699,7 @@
     </step>
     <step>
      <para> Add a resource as described in <xref linkend="pro.conf.hawk2.primitive.add"/> or select
-      an existing primitive to edit. </para>
+      an existing primitive to edit.</para>
      <para>&hawk2; automatically shows the most important <guimenu>Operations</guimenu>
        (<literal>start</literal>, <literal>stop</literal>, <literal>monitor</literal>) and proposes
       default values. </para>
