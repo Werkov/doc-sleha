@@ -772,6 +772,7 @@
     select <guimenu>Recent Events</guimenu>. The dialog that opens lists recent actions
     performed for the resource. Failures are displayed in red. To view the resource details, 
     click the magnifier icon in the <guimenu>Operations</guimenu> column.
+   </para>
     <figure>
      <title>&hawk2;&mdash;Resource Details</title>
      <mediaobject>
@@ -783,7 +784,6 @@
       </imageobject>
      </mediaobject>
     </figure>
-    </para>
   </sect2>
  </sect1>
  
